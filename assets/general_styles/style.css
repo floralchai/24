@@ -19,7 +19,7 @@ body::before {
 }
 .bushes {
     border: 10px solid;
-    border-image: url("/assets/graphics/strip30.gif") 10 repeat;
+    border-image: url("../graphics/strip30.gif") 10 repeat;
 }
 .imgtxt {
   position: relative;
@@ -87,7 +87,7 @@ body::before {
     text-align: justify;
     text-indent: 10px;
     font-size: 0.9rem;
-    background-image: url("/assets/graphics/strip_pink.gif");
+    background-image: url("../graphics/strip_pink.gif");
 }
 .box_chars {
     border: 2px dotted palevioletred;
@@ -115,13 +115,21 @@ body::before {
     display: flex;
     justify-content: start;
     gap: 2rem;
-    align-items: center;
+    align-items: flex-start;
+}
+.content-wrapper > .paragraph {
+    flex: 1 1 0;
+    min-width: 0;
+}
+.content-wrapper > section {
+    flex: 0 1 250px;
+    min-width: 0;
 }
 .nekochime {
     max-width: 100%;
     width: 560px;
     height: auto;
-    background: url("../../assets/graphics/dot40.gif"); 
+    background: url("../graphics/dot40.gif");
     border-radius: 10px; 
     box-sizing: border-box; 
     padding: 15px;
@@ -129,7 +137,7 @@ body::before {
 }
 .box-inner { 
     background: #ebdab2;
-    background-image: url("../../assets/graphics/ice-creamdivider.gif");
+    background-image: url("../graphics/ice-creamdivider.gif");
     background-repeat: repeat-x;
     border-radius: 10px;
     padding: 10px;
@@ -145,14 +153,6 @@ body::before {
     font-style: normal;
     text-decoration: underline 3px #fff;
     text-underline-offset: 5px;
-}
-.chiikawa {
-    background-image: url("../chiikawa-clique/chiikawa-clique.jpg");
-    background-size: cover;
-    background-position: top center;
-    color: #fff;
-    text-shadow: -1px 0 var(--color-black), 0 1px var(--color-black), 1px 0 var(--color-black), 0 -1px var(--color-black);
-    margin-block-start: 0;
 }
 #statuscafe, .paragraph_transparent {
     padding: 0.25rem;
