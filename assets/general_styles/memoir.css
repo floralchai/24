@@ -1,0 +1,67 @@
+body {
+  background-image:
+    radial-gradient(white 1px, transparent 1px),
+    radial-gradient(white 1px, transparent 1px),
+    url("../graphics/bg-yellow.gif");
+}
+
+body::before {
+    background: url("../graphics/chime-yellow.png") no-repeat center/contain;
+}
+.base {
+  border-left-color: var(--color-yellow);
+}
+hr.string {
+  border: none;
+  height: 15px; 
+  background-image: url('../graphics/dandelion-line.gif'); 
+  background-repeat: no-repeat; 
+  background-position: center;
+  background-size: contain;
+}
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 0.5rem;
+}
+.entry {
+    border: 0.2rem double var(--color-green);
+    padding: 0.5rem;
+}
+.title {
+    font-size: 1.5rem;
+}
+.title-link {
+  color: #F6BE00;
+  text-decoration: underline;
+}
+.title-link:hover {
+  color: var(--color-white);
+  font-weight: bold;
+  background-color: #F6BE00;
+}
+img {
+  margin: 5px auto;
+  display: block;
+}
+.link {
+  color: var(--color-green);
+  text-decoration: underline dotted 3px;
+}
+.link:hover, .title-link:hover {
+  font-weight: bold;
+  font-size: larger;
+}
+.top {
+  color: #F6BE00;
+  text-decoration: none;
+}
+.top:hover {
+  background-color: oldlace;
+  text-decoration: overline dotted 3px;
+}
+.menu {
+  margin: 0 !important;
+  display: initial !important;
+}

@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../assets/general_styles/scrollbar.css">
+    <link rel="stylesheet" href="../../assets/general_styles/root.css">
+    <title>Mean Girls</title>
+    <style>
+        @font-face {
+            font-family: "MysteryMixed";
+            src: url("../../assets/fonts/MysteryMixed.ttf");
+        }
+        @font-face {
+            font-family: "RogueScript";
+            src: url("../../assets/fonts/RougeScript.ttf");
+        }
+        html, body {
+            height: 100%;
+            margin: 0;
+            scroll-behavior: smooth;
+        }
+        * {
+            box-sizing: border-box;
+        }
+        hr.redribbon {
+            border: none;
+            height: 22px; 
+            background-image: url('../../assets/graphics/line-redribbon.png'); 
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: contain;
+            image-rendering: auto;
+
+        }
+        h1 {
+            font-family: "RogueScript", Arial, Helvetica, sans-serif;
+            font-size: 3.95rem;
+            color: #bf3560;
+            letter-spacing: 10px;
+            background-image: url("../../assets/graphics/paper.png");
+            background-size: auto 100%;
+            background-repeat: no-repeat;
+            background-position: center;
+            image-rendering: pixelated;
+            text-align: center;
+        }
+        h2 {
+            font-family: "RogueScript", 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            font-size: 2rem;
+            background-color: var(--color-black);
+            color: var(--color-white);
+            padding-left: 1rem;
+            padding-bottom: 5px;
+            margin-block-end: 0;
+            border-bottom: 3px dotted var(--color-white);
+        }
+        html {
+            font-size: 130%;
+        }
+        body {
+            background-attachment: fixed;
+            background-color: #f4b8da;
+            color: var(--color-black);
+            background-image: url("../../assets/graphics/blackdotnote.png"), url("../../assets/graphics/redmusical.png"), url("../../assets/graphics/blackdot.gif");
+            background-repeat: no-repeat, no-repeat, repeat;
+            background-position: bottom right, top right, center;
+            font-size: 0.9rem;
+            background-size: 8%, 40%, auto;
+        }
+        .base, .base-sidebg {
+            width: min(42rem, 100%);
+            padding: 0.75rem;
+            border: none;
+        }
+        .base {
+            margin-top: 2rem;
+        }
+
+        .base-sidebg {
+            z-index: -999;
+            top: 0;
+            bottom: 0;
+        }
+
+        .base-sidebg {
+            position: fixed;
+            padding: 1.5rem;
+            background-image: url("../../assets/graphics/bg-lace.gif");
+            background-repeat: repeat-x;
+            background-position: top;
+        }
+        .base-sidebg::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: -50px; /* move it outside */
+            width: 50px;  /* width of your border strip */
+            height: 100%;
+            background-image: url("../../assets/graphics/p_lace.png");
+            background-repeat: repeat-y;
+            background-size: 50px 60px;
+        }
+        .base {
+            border-left: 2px dashed #f4b8da;
+            margin-left: 10px;
+        }
+        .logo, .note {
+            height: 85px;
+            max-width: 100%;
+            margin: auto;
+            display: block;
+        }
+        .side {
+            display: flex;
+        }
+        img {
+            image-rendering: pixelated;
+            object-fit: contain;
+        }
+        .sprite {
+            width: auto;
+            height: 400px;
+            margin: 1rem;
+        }
+        .book {
+            width: 150px;
+            margin: auto;
+            display: block;
+        }
+        .gif {
+            border: 5px solid #f4b8da;
+            outline: 2px dotted var(--color-black);
+            border-radius: 5px;
+            height: 280px;
+            max-width: 100%;
+            margin: auto;
+            display: block;
+        }
+        .back {
+            font-size: 1.2rem;
+            text-shadow: 0 0 5px #fff;
+        }
+        a {
+            color: deeppink;
+            text-decoration: 3px underline dotted;
+            text-underline-offset: 6px;
+        }
+        a:hover {
+            background-color: deeppink;
+            color: var(--color-white);
+            text-decoration: 3px underline dotted var(--color-white);
+        }
+        a.footnote {
+            vertical-align: super;
+            font-weight: bold;
+            text-decoration: none;
+            font-size: 16px;
+        }
+        .arrow {
+            image-rendering: auto;
+            margin-left: 5px;
+            vertical-align: bottom;
+        }
+        .flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+        .foot {
+            text-align: center;
+            font-size: smaller;
+            color: gray;
+        }
+        @media only screen and (max-width: 1000px) {
+            body {
+                background-color: var(--color-white);
+                background-image: none;
+            }
+            .base {
+                margin: auto;
+                display: block;
+                margin-top: 3rem;
+            }
+            .base-sidebg {
+                width: 100%;
+            }
+        }
+        @media only screen and (max-width: 860px) {
+            h1 {
+                font-size: 2.75rem;
+            }
+        }
+        @media only screen and (max-width: 740px) {
+            .gif, .logo, .note {
+                height: auto;
+            }
+            .logo, .note {
+                width: 50px;
+            }
+            .flex {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+        @media only screen and (max-width: 420px) {
+            .side {
+                flex-direction: column-reverse;
+            }
+            html {
+                font-size: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="base-sidebg"></div>
+    <!----------MAIN CONTENT---------->
+    <main class="base">
+        <nav class="flex">
+            <a class="back" href="../index.html">⟵ back to flora</a>
+            <span>Last updated: 09 November 2025</span>
+        </nav>
+            <h1>Mean Girls</h1>
+        <img class="note" src="../../assets/graphics/blacknote.png">
+        <p><span class="dropcap">M</span>ean Girls is a 2004 American teen comedy movie starring Lindsay Lohan, Rachel McAdams, Tim Meadows, Ana Gasteyer, Amy Poehler, and Tina Fey. It was written by Fey and directed by Mark Waters. Mean Girls is about a teenage girl, Cady Heron, who used to be home schooled in Africa but moves to the United States and has to go to a normal high school in Evanston, Illinois. On her first day at school, she hates it. She thinks it is a bit weird because she cannot go to the toilet when she wants, cannot write in green ink and has to stay in the same seat every time she goes into a lesson (Source: <a class="outlink" rel="noopener noreferrer" target="_blank" href="https://simple.wikipedia.org/wiki/Mean_Girls">Wikidepia</a>)</p>
+        <h2>Overall plot</h2>
+        <p>About the Plastics: The Plastics is a popular Northshore high girl group, originally consist of Regina George, Karen Smith, Gretchen Wieners. Soon after when the main character Cady Heron arrived, things started to get interesting. By interesting, it means that the Burn Book<a class="footnote" id="burnbook">[1]</a> messed up the whole school and turn Cady's fantasy sequence of the school into a zoo. I won't tell the rest of the movie, it is for you to watch if you are interested like me too</p>
+        <img class="book" src="../../assets/graphics/burn-book.png">
+        
+        <h2>About the characters</h2>
+        <section class="side">
+            <div>
+                <p>Cady Heron: Cady is rather naive, she might have no clue what is going on and just randomly say what she thinks is cool. Her main motive throughout the whole movie is to get Aaron to date her. It is shown in the Walmart black friday ads<a class="footnote" id="ads">[2]</a> that Cady is later to be the principal of the Northshore high</p>
+                <img class="gif" src="../../assets/media/cadysmilling.gif">
+            </div>    
+            <img class="sprite" src="../../assets/media/png-cady.png">
+        </section>
+        <section class="side">
+            <img class="sprite" src="../../assets/media/png-regina.png">
+            <div>
+                <p>Regina George: The typical mean girl stereotype, known for her popularity. I have nothing much to say about Regina except I admire her dare-to-challenge anything that gets over her in the school’s food chain</p>
+                <img class="gif" src="../../assets/media/gretchenstop.gif">
+            </div>
+        </section>
+        <section class="side">
+            <p>Gretchen Wieners: Gretchen is a rich girl, a follower, and dedicated type of mean girl. Like Karen, I don’t think she is that mean… Of course she said a few rash things, but they are rather more blunt than mean. Like when the group finished the “Jingle Bell Rock” dance, she had a few comments on Cady that Cady is blushing and all. That conversation stopped with Regina saying “Gretchen, stop trying to make fetch happen. It’s not going to happen” after Gretchen said “That’s so fetch<a class="footnote" id="fetch">[3]</a>”
+            <img class="logo" src="../../assets/graphics/red-kiss.png"></p>
+            <img class="sprite" src="../../assets/media/png-gretchen.png">
+        </section>
+        <section class="side">
+            <img class="sprite" src="../../assets/media/png-karen.png">
+            <div>
+                <p>Karen Smith: I love Karen, she is the dumb blonde stereotype<a class="footnote" id="dumb">[4]</a>. Well, she doesn’t have many scenes but I can see that she is really nice. Being in the wrong group – the Plastics – makes her reputation worse in the first place and I think she is really pretty :sob:</p>
+                <img class="gif" src="../../assets/media/whyareyouwhite.gif">
+            </div>
+        </section>
+        <section>
+            <p>Kevin Gnapoor: I always think Kevin is definitely a friendly person towards everyone, a great mathlete and a badass M.C. He makes fun jokes, lightens up the mood and is generally nice and calm. For me he is the best character of the whole show, much love. It is actually revealed that Kevin's actor (Rajiv Surendra) and Aaron's actor theorized that their characters might be gay for each other<a class="footnote" id="theory">[5]</a>. This said out as a joke later on in the interview</p>
+            <img class="gif" src="../../assets/media/kevindontletthehaterstopyou.gif">
+        </section>
+        <hr class="redribbon">
+        <ol>
+            <li>
+                <a href="https://meangirls.fandom.com/wiki/Burn_Book">Every lines and context of the Burn Book</a><a href="#burnbook"><img class="arrow" src="../../assets/graphics/outlink2.png"></a>
+            </li>
+            <li>
+                <a href="https://www.youtube.com/watch?v=6TUe3XWz1d8">Mean Girls Walmart commercials</a><a href="#ads"><img class="arrow" src="../../assets/graphics/outlink2.png"></a>
+            </li>
+            <li>
+                <a href="https://meangirls.fandom.com/wiki/Fetch">Explanation on Gretchen's "Fetch"</a><a href="#fetch"><img class="arrow" src="../../assets/graphics/outlink2.png"></a>
+            </li>
+            <li>
+                <a href="https://tvtropes.org/pmwiki/pmwiki.php/Main/DumbBlonde">The TV trope of dumb blonde stereotype</a><a href="#dumb"><img class="arrow" src="../../assets/graphics/outlink2.png"></a>
+            </li>
+            <li>
+                <a href="https://www.gaytimes.com/culture/kevin-g-secretly-wanted-aaron-samuels-says-mean-girls-star/">An article explained on Rajiv Surendra and Jonathan Bennett's theory</a><a href="#theory"><img class="arrow" src="../../assets/graphics/outlink2.png"></a>
+            </li>
+        </ol>
+        <footer class="foot">
+            Mean Girls © Tina Fey | This page is solely a fan shrine. Not affiliated with the creators on any kinds
+        </footer>
+        <!-- Scroll to top fixed button -->
+        <button onclick="topFunction()" id="scrollbtn" title="Go to top">Scroll to top ⤴</button>
+    </main>
+<script src="../../assets/scripts/scrolltotop.js"></script>
+</body>
+</html>

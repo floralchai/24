@@ -1,0 +1,119 @@
+body {
+  background-image:
+    radial-gradient(white 1px, transparent 1px),
+    radial-gradient(white 1px, transparent 1px),
+    url("../graphics/bg-blue.gif");
+}
+
+body::before {
+    background: url("../graphics/chime-blue.png") no-repeat center/contain;
+}
+.base {
+  border-color: var(--color-blue);
+}
+.column-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: start;
+  padding: 0 4px;
+}
+.gallery {
+  flex: 32.5%;
+  max-width: 32.5%;
+}
+.gallery img {
+  vertical-align: middle;
+  margin-top: 8px;
+  width: 100%;
+  border: 1.5px dotted var(--color-black);
+  background-color: var(--color-green);
+}
+.polaroid {
+  background-color: #fff;
+  padding: 0.5rem 0.5rem 2rem;
+  box-shadow: 2px 3px 2px #8a5d4040;
+  border: 1px solid;
+  margin: 8px !important;
+}
+.lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.8);
+  backdrop-filter: blur(4px);
+  justify-content: center;      /* centers horizontally */
+  align-items: center;          /* centers vertically */
+  padding: 20px;                /* prevents image touching edges on phones */
+  z-index: 9999;
+}
+
+/* Image sizing */
+#FullImage {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;          /* image NEVER crops */
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.3);
+}
+
+/* Close button */
+.close-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+  z-index: 10000;
+  color: white;
+  transition: transform .15s ease;
+}
+.close-btn:hover {
+  transform: scale(1.15);
+}
+.close-btn svg {
+  color: white;
+  background: var(--color-green);
+  border: 5px solid var(--color-green);
+  border-radius: 100%;
+}
+figcaption {
+  color: #000;
+  text-align: center;
+  margin-top: 0.2rem;
+  font-size: 0.85rem;
+}
+.polaroid:hover, .polaroid:focus {
+  scale: 1.2;
+  cursor: pointer;
+}
+hr.divider {
+  border: none;
+  height: 35px; 
+  background-image: url('../graphics/divider.png'); 
+  background-repeat: no-repeat; 
+  background-position: center;
+  background-size: contain;
+}
+@media only screen and (max-width: 800px) {
+  .column {
+    flex: 65%;
+    max-width: 65%;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .column {
+    flex: 100%;
+    max-width: 100%;
+  }
+}
+@media only screen and (max-width: 420px) {
+  .column-gallery {
+    flex-direction: column;
+  }
+  .gallery {
+    flex: 1;
+    max-width: 100%;
+  }
+  .polaroid:hover, .polaroid:focus {
+    scale: 1.1;
+  }
+}

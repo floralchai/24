@@ -1,0 +1,104 @@
+body {
+  background-image:
+    radial-gradient(white 1px, transparent 1px),
+    radial-gradient(white 1px, transparent 1px),
+    url("../graphics/bg-pink.gif");
+}
+
+body::before {
+    background: url("../graphics/chime-pink.png") no-repeat center/contain;
+}
+.base {
+  border-color: var(--color-pink);
+}
+hr.ribbon {
+  border: none;
+  height: 25px; 
+  background-image: url('../graphics/line-heart.gif'); 
+  background-repeat: no-repeat; 
+  background-position: center;
+  background-size: contain;
+}
+.title {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  font-size: 1.25rem;
+}
+.flex-img img {
+  width: 190px;
+}
+.gallery {
+  border: 1px solid var(--color-black);
+  width: 220px;
+}
+.gallery:hover {
+  border: 2px solid #777;
+}
+.gallery img {
+  width: 100%;
+  height: auto;
+}
+
+.name {
+  padding: 15px;
+  text-align: center;
+  color: var(--color-black);
+}
+.gallery > a {
+  text-decoration: none !important;
+}
+
+.name::before {
+  content: '★ ';
+  color: darkred;
+}
+.name:hover {
+  color: #777;
+  text-decoration: underline 2px #777 !important;
+}
+.responsive {
+  display: flex;
+  gap: 6px;
+}
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+@media only screen and (max-width: 960px) {
+  .char-entry {
+    max-width: 100%;
+  }
+}
+@media only screen and (max-width: 560px) {
+  .char-entry {
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+  a.link {
+    font-size: 1rem;
+  }
+  .gallery {
+    width: 150px;
+  }
+  .gallery img {
+    height: max-content;
+  }
+}
+@media only screen and (max-width: 320px) {
+  .responsive {
+    flex-direction: column;
+  }
+  .gallery {
+    max-width: 100%;
+    width: 100px;
+  }
+  .title a {
+    font-size: 1.25rem;
+  }
+  .flex-img img {
+    max-width: 100%;
+    width: 130px;
+  }
+}

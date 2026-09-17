@@ -1,0 +1,175 @@
+/* ===============================
+   Comment Widget — Garden Theme
+   Keeps original structure intact
+   =============================== */
+
+/* Main widget */
+#c_widget {
+    box-sizing: border-box;
+    padding: 1rem;
+    font-family: "SourceSerif4", 'Times New Roman', Times, serif;
+    font-size: 0.8rem;
+    color: var(--color-brown);
+    background-color: transparent;
+}
+
+/* Buttons */
+#c_widget button,
+#c_widget input[type=submit] {
+    padding: 4px;
+    border: 2px solid seashell;
+    background-color: var(--color-brown);
+    color: var(--color-white);
+    font-family: "Nunito", 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    box-shadow: none;
+    border-radius: 4px;
+}
+
+#c_widget button:hover,
+#c_widget input[type=submit]:hover {
+    background-color: hotpink;
+    border: 2px dotted var(--color-brown);
+    cursor: pointer;
+}
+
+#c_widget button:disabled,
+#c_widget input[type=submit]:disabled {
+    opacity: 60%;
+}
+
+/* Input section */
+#c_inputDiv {
+    margin-bottom: 1.5rem;
+}
+
+#c_widgetTitle {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    text-shadow:
+        -1px 0 var(--color-white),
+         0 1px var(--color-white),
+         1px 0 var(--color-white),
+         0 -1px var(--color-white);
+}
+
+/* Input wrappers */
+.c-inputWrapper {
+    margin-bottom: 10px;
+}
+
+/* Labels */
+.c-label {
+    font-family: "Nunito", Arial, Helvetica, sans-serif;
+    font-size: 0.75rem;
+    font-weight: bold;
+    padding: 5px;
+    background-color: var(--color-green);
+    border-radius: 5px 5px 0 0;
+    display: inline-block;
+}
+
+/* Inputs & textarea */
+.c-input {
+    width: 560px;
+    max-width: 100%;
+    padding: 4px;
+    font-size: 0.75rem;
+    font-family: "Nunito", 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: bold;
+    color: var(--color-brown);
+    border: none;
+    outline: none;
+    border-radius: 0 5px 5px 5px;
+}
+
+.c-input:focus {
+    border: 3px solid var(--color-brown);
+}
+
+.c-textInput {
+    resize: vertical;
+}
+
+/* ===============================
+   Comment cards (letters)
+   =============================== */
+
+.c-comment {
+    background-color: var(--color-white);
+    border-left: 8px solid var(--color-green);
+    padding: 1rem;
+    margin: 20px auto;
+    width: 560px;
+    max-width: 100%;
+    line-height: 1.25rem;
+}
+
+/* Replies */
+.c-replyContainer {
+    margin-top: 10px;
+}
+
+.c-reply {
+    margin-top: 10px;
+    padding-left: 10px;
+    border-left: 5px solid var(--color-green);
+    background-color: var(--color-white);
+}
+
+/* Name & meta */
+.c-name {
+    display: inline-block;
+    margin-right: 10px;
+    font-family: "Fredoka", "SourceSerif4", Arial, Helvetica, sans-serif;
+    font-size: 0.85rem;
+}
+
+.c-timestamp {
+    float: right;
+    font-size: 0.7rem;
+    opacity: 0.7;
+}
+
+/* Website link */
+.c-site {
+    margin-left: 6px;
+    color: var(--color-brown);
+    text-decoration: underline 2px solid;
+    text-underline-offset: 4px;
+}
+
+.c-site:hover {
+    background-color: var(--color-green);
+}
+
+/* Text body */
+.c-text {
+    margin-top: 10px;
+    font-size: 0.85rem;
+    text-align: left;
+}
+
+/* Reply & expand buttons */
+.c-replyButton,
+.c-expandButton {
+    margin-top: 10px;
+    margin-right: 5px;
+}
+
+/* Pagination */
+#c_pagination {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.c-paginationButton {
+    padding: 4px;
+}
+
+/* Remove browser defaults */
+button {
+    border-radius: 0;
+    box-shadow: none;
+}

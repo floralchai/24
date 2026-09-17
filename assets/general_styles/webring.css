@@ -1,0 +1,57 @@
+.templateWebring {
+    padding: 6px;
+    box-sizing: border-box;
+    max-width: 100%;
+    width: 280px;
+    text-align: center;
+    height: 120px;
+    border: 2px solid #DD28A7;
+    background-image: url("/assets/graphics/webring-bg.png");
+    background-size: cover;
+    display: flex;
+    gap: 7px;
+}
+#webringiconbox {
+    border: 2px solid #DD28A7;
+    position: relative;
+    background-image: url("../png/snoopy.jpg");
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+    width: 100%;
+    display: block;
+    height: auto;
+}
+#webringdescbox {
+    display: flex;
+    justify-content: center;
+    padding: 15px;
+    box-sizing: border-box;
+    border: 1px dashed #DD28A7;
+}
+#text {
+    line-height: normal;
+    font-weight: normal;
+    color: #452134;
+    font-family: 'Verdana', serif;
+    font-size: small;
+    text-align: center;
+}
+@media only screen and (max-width: 320px) {
+    .templateWebring {
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    #webringiconbox {
+        height: 180px;
+    }
+    #webringdescbox {
+        padding: 5px;
+    }
+    #text {
+        margin-block-start: 1.25rem;
+    }
+}

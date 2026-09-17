@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Love Nikki</title>
+    <style>
+      ::-webkit-scrollbar {
+        width: 8px;
+        height: 12px;
+        background: white;
+      }
+
+      ::-webkit-scrollbar-track {
+        border: 1px solid #efa1bf;
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background: #FFA4D166;  
+        border-radius: 10px;
+        border: 1px solid #efa1bf;
+      }
+
+      ::selection {
+        color: white;
+        background: #f2aac2;
+      }
+
+      @font-face {
+        font-family: "RougeScript";
+        src: url("../../assets/fonts/RougeScript.ttf");
+      }
+
+      @font-face {
+        font-family: "SourceSerif4";
+        src: url("../../assets/fonts/SourceSerif4.ttf");
+      }
+
+      body {
+        background: url("../../assets/graphics/bglace-forln.gif") repeat-x top, linear-gradient(90deg, rgba(255, 255, 255, 1) 55%, rgba(255, 255, 255, 0) 80%), url("../../assets/graphics/background-forln.jpg") repeat-y top right / 100vh;
+        font-size: 0.8rem;
+        image-rendering: pixelated;
+        background-attachment: fixed;
+        color: #4b2e1a;
+        font-family: "SourceSerif4", serif;
+      }
+
+      a {
+        color: #86655a;
+        text-decoration: underline 3px #f2aac2;
+        text-underline-offset: 3px;
+      }
+
+      a:hover,
+      a:active {
+        background-color: #f2aac2;
+      }
+
+      .flex {
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+      }
+
+      .box {
+        padding-top: 3rem;
+        width: 600px;
+        max-width: 100%;
+        height: auto;
+        background: url("../../assets/graphics/whipped-forln.png") repeat-x top, url("../../assets/graphics/dotbg-forln.gif");
+        background-clip: padding-box;
+        border: 16px solid transparent;
+        border-image: url("../../assets/graphics/laceround-forln.png") 900 round;
+        filter: drop-shadow(0px 0px 5px #744b3d);
+        font-weight: 400;
+        z-index: 9;
+      }
+      .boxpink {
+        padding-top: 3rem;
+        width: 600px;
+        max-width: 100%;
+        height: auto;
+        background: url("../../assets/graphics/whipped2-forln.png") repeat-x top, url("../../assets/graphics/dotbg-forln.gif");
+        background-clip: padding-box;
+        border: 16px solid transparent;
+        border-image: url("../../assets/graphics/laceround-forln.png") 900 round;
+        filter: drop-shadow(0px 0px 5px #744b3d);
+        font-weight: 400;
+        z-index: 9;
+      }
+
+      .box-paragraph {
+        padding: 10px;
+        padding-right: 2.4rem;
+      }
+
+      ul li {
+        list-style-type: "⋆ ";
+      }
+
+      li::marker {
+        font-weight: bold;
+      }
+
+      .clipped-mel, .clipped-bow, .clipped-dia, .clipped-mir {
+        position: absolute;
+        right: -50px;
+        bottom: -50px;
+        width: 120px;
+        height: auto;
+        filter: drop-shadow(4px 4px 5px #744b3d);
+        pointer-events: none;
+        z-index: 99;
+      }
+      .clipped-bow {
+        top: -50px;
+        right: -50px;
+      }
+      .clipped-dia {
+        top: -50px;
+        left: -50px;
+      }
+      .clipped-mir {
+        bottom: -70px;
+        left: -70px;
+        rotate: -45deg;
+        height: 140px;
+        width: auto;
+      }
+      .frame {
+        position: relative;
+        width: 190px;
+        aspect-ratio: 250 / 290;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+        margin: 1.25rem;
+      }
+
+      /* frame overlay */
+      .frame::after {
+        content: "";
+        position: absolute;
+        inset: -20px;
+        background: url("../../assets/graphics/mirrorframe-forln.png") no-repeat center;
+        background-size: 100% 100%;
+        pointer-events: none;
+      }
+
+      h1,
+      h2 {
+        font-family: "RougeScript", Times, serif;
+        border-bottom: 1px dashed #f2aac2;
+        text-indent: 5px;
+        color: white;
+        text-shadow: -1px 0 #4b2e1a, 0 1px #4b2e1a, 1px 0 #4b2e1a, 0 -1px #4b2e1a;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      h2 {
+        font-size: 1.45rem;
+      }
+      .photos {
+        image-rendering: auto;
+        max-width: 100%;
+        border: 3px inset #efa1bf;
+      }
+      .date {
+        font-family: "RougeScript", Times, serif;
+        border-bottom: 1px dashed #f2aac2;
+        text-indent: 5px;
+        font-weight: bold;
+        font-size: 1rem;
+        margin-top: 1rem;
+      }
+      .float-left {
+        text-align: left;
+        margin-right: auto;
+      }
+
+      .float-right {
+        text-align: right;
+        margin-left: auto;
+      }
+
+      .center {
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+      }
+
+      .left {
+        position: fixed;
+        margin-top: 100px;
+      }
+
+      .right {
+        position: relative;
+        margin-top: 100px;
+        margin-left: 15rem;
+      }
+      .r-side > img, .l-side > img {
+        max-width: 100%; 
+        width: 120px;
+        height: auto; 
+        flex-shrink: 0; 
+        align-self: center;
+        background-color: #FFA4D166;
+        border-radius: 50%;
+        border: 3px #86655a;
+        border-style: dashed;
+        outline: 5px solid #FFA4D166;
+        margin: 1rem;
+      }
+      .r-side, .l-side {
+        display: flex;
+      }
+      .r-side {
+        flex-direction: row;
+      }
+      .l-side {
+        flex-direction: row-reverse;
+      }
+      @font-face {
+        font-family: "EmilysCandy";
+        src: url("../../assets/fonts/EmilysCandy.ttf");
+      }
+
+      .nav {
+        width: fit-content;
+        margin: 0 auto;
+        margin-top: 1.5rem;
+        text-align: center;
+        image-rendering: auto;
+      }
+
+      .nav-topdeco {
+        display: block;
+        margin: 0 auto 1.25px auto;
+      }
+
+      /* container for buttons + separators */
+      .nav-row {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      /* nav button */
+      .nav-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 90px;
+        height: 36px;
+        padding: 0 12px;
+        background-image: url("../../assets/graphics/navbutton-forln.gif");
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        font-family: "EmilysCandy", monospace;
+        font-size: 12px;
+        letter-spacing: 1px;
+        text-shadow: 1px 1px 0 #ffffff;
+        color: #4b2e1a;
+        text-decoration: none;
+      }
+
+      .nav-button:hover {
+        filter: brightness(1.1);
+        background-color: #ffffff00;
+      }
+
+      /* separator */
+      .nav-separator {
+        display: inline-block;
+      }
+
+      .corner-image {
+        position: fixed;
+        top: -2px;
+        left: -2px;
+        width: 150px;
+        /* adjust */
+        height: auto;
+        z-index: 999;
+        filter: drop-shadow(3px 4px 0 #4b2e1a);
+        image-rendering: pixelated;
+      }
+
+      .box, .boxpink {
+        display: none;
+      }
+
+      .box.active, .boxpink.active {
+        display: block;
+      }
+
+      .footer {
+        margin-top: 2rem;
+        text-align: center;
+        font-size: 0.8rem;
+        color: #5a3b2e;
+        opacity: 0.75;
+      }
+      .nav-toggle {
+        display: none;
+      }
+
+      @media only screen and (max-width: 1024px) {
+        .box, .boxpink {
+          width: 500px;
+        }
+      }
+      @media only screen and (max-width: 860px) {
+        .flex {
+          flex-direction: column;
+          justify-content: center;
+        }
+        .nav-separator {
+          display: none;
+        }
+        .nav-topdeco {
+          display: none;
+        }
+        .nav-row {
+          flex-direction: row;
+          gap: 0.5rem;
+        }
+        .left {
+          position: relative;
+        }
+        .right {
+          margin: 0 auto;
+        }
+        .frame {
+          margin: 0 auto;
+          display: block;
+        }
+        .box, .boxpink {
+          width: 80%;
+        }
+        .box, .boxpink {
+          margin: 0 auto;
+        }
+      }
+      @media only screen and (max-width: 680px) {
+        html {
+          margin: 0;
+        }
+        .nav-button {
+          min-width: 60px;
+          aspect-ratio: 16 / 9;
+          scale: 0.8;
+          image-rendering: pixelated;
+        }
+        .nav-row {
+          gap: 5px;
+        }
+        .r-side {
+          flex-direction: column-reverse;
+        }
+        .l-side {
+          flex-direction: column-reverse;
+        }
+      }
+@media only screen and (max-width: 520px) {
+  html {
+    overflow-x: hidden;
+  }
+  /* show menu button */
+  .nav-toggle {
+    display: block;
+    width: 200px;
+    max-width: 100%;
+    padding: 0.3rem;
+
+    font-family: inherit;
+    font-size: 1rem;
+    color: #4b2e1f;
+
+    background: #f5efe8;
+    border: 7px solid transparent;
+    border-image: url("../../assets/graphics/laceborder-forln.png") 6 round;
+    background-clip: padding-box;
+    filter: drop-shadow(0px 0px 5px #744b3d);
+
+    cursor: pointer;
+    font-family: "EmilysCandy", serif;
+  }
+
+  /* hide decoration + separators */
+  .nav-topdeco,
+  .nav-separator {
+    display: none;
+  }
+
+  /* hide links by default */
+  .nav-row {
+    display: none;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  /* show links when menu active */
+  .nav.open .nav-row {
+    display: flex;
+    height: auto;
+  }
+
+  /* arrow animation */
+  .nav.open .arrow {
+    transform: rotate(180deg);
+  }
+
+  /* make links tappable */
+  .nav-button {
+    text-align: right;
+    background: #f5efe8;
+    border: 1px solid #744b3d;
+    width: 100%;
+  }
+  .nav-button:hover {
+    background: url("../../assets/graphics/dotbg-forln.gif");
+  }
+
+}
+    </style>
+  </head>
+  <body>
+    <img class="corner-image" src="../../assets/graphics/topbow-forln.png">
+    <section class="flex">
+      <section class="left">
+        <div class="frame" style="background-image: url('../../assets/graphics/iconnikki-forln.png');"></div>
+          <nav class="nav">
+            <button class="nav-toggle" aria-expanded="false">
+              Menu <span class="arrow">▾</span>
+            </button>
+
+          <img class="nav-topdeco" src="../../assets/graphics/topdeco-forln.gif" alt="">
+          <div class="nav-row">
+            <a href="#main" class="nav-button">Main</a>
+            <img class="nav-separator" src="../../assets/graphics/separator-forln.gif" alt="">
+            <a href="#characters" class="nav-button">Characters</a>
+            <img class="nav-separator" src="../../assets/graphics/separator-forln.gif" alt="">
+            <a href="#story" class="nav-button">Story</a>
+            <img class="nav-separator" src="../../assets/graphics/separator-forln.gif" alt="">
+            <a href="#progress" class="nav-button">Progress</a>
+            <img class="nav-separator" src="../../assets/graphics/separator-forln.gif" alt="">
+            <a href="#exit" class="nav-button">Exit</a>
+          </div>
+        </nav>
+      </section>
+      <main class="right">
+        <section class="box active" id="main">
+          <h1>Love Nikki</h1>
+          <p class="box-paragraph"> This is my page dedilcated to the series Love Nikki. Love Nikki is a mobile visual novel, the game's topic revolving on fashion. If you are familiar with paper doll dress up flash games then this is the one. This game is owned by Papergames and produced by Tencent Games in China. It is first published in 20th May 2015. The game currently has 5 servers and it is part 3 of the Nikki franchise / <a href="https://lovenikki.fandom.com/wiki/Love_Nikki-Dress_UP_Queen!_Wiki">LN's Wiki</a> <a href="https://www.papegames.cn/en/">Papergames' website</a><br>
+            <img class="center" width="200" src="../../assets/graphics/nikkideco-forln.png">
+          <ul class="box-paragraph">
+            <li>Part 1: "A dressing story" – Nikki's daily life on Earth</li>
+            <li>Part 2: "World travelled" – Nikki's world tour around Earth</li>
+            <li>Part 3: "Miracle Nikki/Love Nikki" – Nikki time travel to Miraland with a quest to change the destiny of the world</li>
+            <li>Part 4: "Shining Nikki" – After the mission in Miraland failed, Nikki went back into the past, start it all over again</li>
+            <li>Part 5: "Infinity Nikki" – Nikki and Momo went on a new journey, collect costumes, solve puzzles, and explore mysterical places of Miraland, with a desire to touch "the miracle costume that saved the world"</li>
+          </ul>
+          </p>
+          <img class="clipped-mel" src="../../assets/graphics/mymel-forln.png" alt="">
+          <img class="clipped-dia" src="../../assets/graphics/diamond-forln.png" alt="">
+        </section>
+        <section class="boxpink" id="characters">
+          <h1>Characters</h1>
+          <div style="color: red;" class="box-paragraph">
+            <b>NOTE:</b> This page would only contain basic information about the main characters and not spilling any spoilers of the LN's story 
+          </div>
+          <div class="r-side">
+            <p class="box-paragraph">
+              <b style="color: palevioletred;">Nikki</b> is the MC of the story. She is a cheerful and kind girl. Her apperance is dedicate and quaint, pink hair, coquette vintage dress, subtle smile. She is the ideal "girl next door" type is what I would describe
+            </p>
+            <img src="../../assets/graphics/nikkisprite-forln.png">
+          </div>
+          <div class="l-side">
+            <p class="box-paragraph">
+              <b style="color: #fbd06a;">Momo</b> is Nikki's companion. He is a talking cat who loves bacon. If anyone mentioned bacon, he would be there to take the risks. He also has an eye for pretty and mature ladies such as Lunar. His body fur is white and he always wear a yellow cat hoodie with him
+            </p>
+            <img src="../../assets/graphics/momosprite-forln.png">
+          </div>
+          <div class="r-side">
+            <p class="box-paragraph">
+              <b style="color: orange;">Bobo</b> is Nikki and Momo's friends. They together go on a whole long journey through many nations. She is from Lilith nation, which represents a fairy tale fashion style. She can be seen in a fight with Momo where the two are mocking one another
+            </p>
+            <img src="../../assets/graphics/bobosprite-forln.png">
+          </div>
+          <div class="l-side">
+            <p class="box-paragraph">
+              <b style="color: plum;">Lunar</b> is one of the characters that very important to the plot point. She is a gentle and soft-spoken lady, dreaming to become a successful designer. Her main color scheme is purple and white. Nikki's team helped her in an incident and after then she become one of Nikki's friends
+            </p>
+            <img src="../../assets/graphics/lunarsprite-forln.png">
+          </div>
+          <div class="r-side">
+            <p class="box-paragraph">
+              <b style="color: gray;">Kimi</b> is the heir of the Apple Federation Group, daughter of a chairman. She is independent and determined to do what she can for her family business and her own self. She has long silver hair and a black white stripes pattern dress. She also has an Assistant named Joe
+            </p>
+            <img src="../../assets/graphics/kimisprite-forln.png">
+          </div>
+          <div class="l-side">
+            <p class="box-paragraph">
+              <b style="color: purple;">Ace</b> is from the Pigeon Kingdom, a wandering swordman. She is actually the younger sister of queen Elle, which is the current queen of the Pigeon Kingdom. 
+            </p>
+            <img src="../../assets/graphics/acesprite-forln.png">
+          </div>
+          <img class="clipped-mir" src="../../assets/graphics/mirror-forln.png" alt="">
+          <img class="clipped-bow" src="../../assets/graphics/bowcharm-forln.png" alt="">
+        </section>
+        <section class="box" id="story">
+          <h1>Story</h1>
+          <p class="box-paragraph">The story starts off with Nikki travel to a new world called "Miraland", she accompanied with her talking cat Momo. It actually doesn't just "boom they are now in Miraland", a queen of Lilith summoned them. Their first destination is in Apple Federal where the two met Yoko. Later, Yoko is also a companion of Nikki and Momo, together, they went on a journey, meeting a lot of designers, stylists. As getting deeper into the lore, more atagonists and supporting characters show up. Story about the nations can be seen more in <a href="https://lovenikki.fandom.com/wiki/Category:Locations">LN's Wiki</a>
+          <img class="center" width="200" src="../../assets/graphics/nikkideco2-forln.png">
+          My favorite character is Kimi. She is the heir of Apple Federal. A trivia is that Kimi is shipped with Nikki and fans suspected that she is also in love with her. Kimi closely related to one of my day dreaming OC's personalities, stoic and calm. Her design is modern, matched with the nation she related to. Despite not showing up in the later chapters, or sometimes appear, she still serve as a major plot point for the story
+          <br>
+          </p>
+          <img class="clipped-mel" src="../../assets/graphics/mymel-forln.png" alt="">
+          <img class="clipped-dia" src="../../assets/graphics/diamond-forln.png" alt="">
+        </section>
+        <section class="boxpink" id="progress">
+          <h1>Progress tracking</h1>
+          <p class="box-paragraph">
+            My diary of the game. This will be updated indefinitely <br>
+            <div class="date">23/1/2026</div>
+            <br>
+            Knowing the fact that this game is super p2w, I still buy 2 outfits that I love 😭 Not gonna buy anything for this month eventually
+            <div class="date">21/1/2026</div>
+            <br>
+            <img class="photos" width="240" src="../../assets/media/lnhomescreen.png">
+            <img class="photos" width="240" src="../../assets/media/lnwardrobe.png">
+            <br>
+            I currently have a lot of diaz and saving them up for the next big events of the game. These images are took a few days before and is not matched to my current progress. Under are the fits I took on for my avi
+            <br>
+            <img class="photos" width="240" src="../../assets/media/lningame.png">
+            <img class="photos" width="240" src="../../assets/media/lningame2.png">
+          </p>
+          <img class="clipped-mir" src="../../assets/graphics/mirror-forln.png" alt="">
+          <img class="clipped-bow" src="../../assets/graphics/bowcharm-forln.png" alt="">
+        </section>
+        <section class="box" id="exit">
+          <h1>Exit</h1>            
+            <ul class="box-paragraph">Credits for most of the graphics are used under these websites:
+              <li>
+                <a href="https://foollovers.com/">Foollovers' sozai</a>
+              </li>
+              <li>
+                <a href="https://nyaa.neocities.org/materials">Nya's materials</a> 
+              </li>
+              <li>
+                <a href="https://lovenikki.fandom.com/wiki/Love_Nikki-Dress_UP_Queen!_Wiki">LN's wiki Fandom</a>
+              </li>
+              <li>
+                <a href="https://www.pinterest.com/">Pinterest</a>
+              </li>
+            </ul>
+            <p class="box-paragraph">
+              <a href="../index.html">Back to flora</a> | <a href="../../index.html">Back home</a>
+            </p>
+          <img class="clipped-mel" src="../../assets/graphics/mymel-forln.png" alt="">
+          <img class="clipped-dia" src="../../assets/graphics/diamond-forln.png" alt="">
+        </section>
+        <footer class="footer">
+        <p>Part of <a href="../../index.html">Floralchai</a>. This is a fansite for Love Nikki and does not relate to Papergames</p>
+      </footer>
+      </main>
+    </section>
+    <script>
+const buttons = document.querySelectorAll(".nav-button");
+const boxes = document.querySelectorAll(".box, .boxpink");
+
+buttons.forEach(btn => {
+  btn.addEventListener("click", e => {
+    e.preventDefault();
+
+    const id = btn.getAttribute("href").substring(1);
+
+    boxes.forEach(box => box.classList.remove("active"));
+
+    const target = document.getElementById(id);
+    if (target) target.classList.add("active");
+  });
+});
+</script>
+  </body>
+</html>

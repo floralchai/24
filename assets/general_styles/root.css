@@ -1,0 +1,405 @@
+:root {
+    --color-brown: #604E43;
+    --color-white: #fffefc;
+    --color-green: #ADD548;
+    --color-pink: #fcc5cc;
+    --color-orange: #FFA600;
+    --color-blue: #7ecad3;
+    --color-yellow: #FCD639;
+    --color-purple: #BB96D6;
+    --color-black: #000000;
+}
+@font-face {
+    font-family: "SourceSerif4";
+    src: url("../fonts/SourceSerif4.ttf") format('truetype');
+}
+@font-face {
+    font-family: "Nunito";
+    src: url("../fonts/Nunito.ttf") format('truetype');
+}
+@font-face {
+    font-family: "Inter";
+    src: url("../fonts/Inter.ttf") format('truetype');
+}
+html, body {
+  height: 100%;
+  margin: 0;
+  scroll-behavior: smooth;
+}
+* {
+    box-sizing: border-box;
+}
+html {
+    font-size: 120%;
+}
+body {
+    color: var(--color-brown); 
+    font-family: "SourceSerif4", 'Times New Roman', Times, serif;
+
+    background-attachment: fixed;
+    background-repeat: repeat;
+    background-position: 0 0, 7.5px 7.5px, center;
+    background-size: 15px 15px, 15px 15px, auto;
+    position: relative;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    right: 10%;
+    width: 120px;
+    height: auto;
+    aspect-ratio: 370 / 1530;
+    filter: drop-shadow(2px 2px 0 var(--color-white)) drop-shadow(-2px 2px 0 var(--color-white)) drop-shadow(0 2px 0 var(--color-white)) drop-shadow(0 -2px 0 var(--color-white)) drop-shadow(0 0 5px rgba(0,0,0,0.45));
+    pointer-events: none;
+    z-index: 999;
+}
+
+#scrollbtn {
+  display: none; 
+  position: fixed; 
+  bottom: 15px;
+  right: 10px;
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  background-color: var(--color-yellow);
+  border: 1px solid var(--color-black);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.45);
+  color: var(--color-white);
+  border-radius: 5px;
+}
+#scrollbtn:hover {
+    scale: none;
+    opacity: 0.6;
+}
+a {
+    color: var(--color-green);
+    text-decoration: underline 2px;
+    text-underline-offset: 3px;
+}
+a:hover {
+    color: var(--color-white);
+    text-decoration: none;
+    background-color: dodgerblue;
+}
+.updatebox ul a {
+    color: rgb(150, 30, 30);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 1px;
+}
+.updatebox ul a:hover {
+    background-color: rgb(150, 30, 30);
+    color: var(--color-white);
+    text-decoration: underline 1px rgb(150, 30, 30);
+    font-style: normal;
+}
+.base, .base-sidebg{
+    width: min(43rem, 100%);
+    padding: 1rem;
+    padding-right: 1.6rem;
+}
+.base {
+    border-left-width: 2px;
+    border-left-style: dashed;
+    margin-left: 8px;
+}
+.base-sidebg {
+    position: fixed;
+    z-index: -999;
+    top: 0;
+    bottom: 0;
+}
+.base-sidebg {
+    background-color: #fffefc;
+    background-clip: padding-box;
+    border-right: 16px solid;
+    border-image: url("/assets/graphics/side-bg.png") 18 round;
+}
+.heading {
+    font-size: 2.5rem;
+    font-style: italic;
+    letter-spacing: 0.2rem;
+}
+.bold-big {
+    font-size: 1rem;
+    font-weight: bold;
+}
+.paragraph {
+    font-size: 0.8rem;
+    text-align: justify;
+    line-height: 1.75rem;
+    word-spacing: 0.1rem;
+}
+.dropcap {
+    font-size: 4.6rem;
+    font-weight: bold;
+    float: left;
+    line-height: 60px;
+    padding-top: 4px;
+    padding-right: 8px;
+    padding-left: 3px;
+} 
+.sub-head {
+    font-size: 1.75rem;
+    font-weight: lighter;
+    letter-spacing: 0.3rem;
+}
+.btn-nav {
+    font-size: 1.2rem;
+    font-family: "Nunito", Arial, Helvetica, sans-serif;
+    text-decoration: underline 3px dotted;
+    margin-left: 10px;
+    padding: 2px;
+}
+.btn-nav:hover {
+    text-decoration: underline 3px dotted var(--color-white) !important;
+}
+h2 {
+    letter-spacing: 0.1rem;
+}
+.navigation {
+    border-left: 5px solid var(--color-brown);
+    padding-left: 10px;
+    background-color: oldlace;
+    padding-bottom: 5px;
+    padding-top: 5px;
+}
+hr {
+    border: 0;
+}
+hr.line {
+  border: none;
+  height: 37px; 
+  background-image: url('../graphics/heart-line.png'); 
+  background-repeat: no-repeat; 
+  background-position: center;
+  background-size: contain;
+}
+hr.rose {
+    border: none;
+    height: 37px; 
+    background-image: url('/assets/graphics/rose-line.gif'); 
+    background-repeat: no-repeat; 
+    background-position: right;
+    background-size: contain;
+}
+.current {
+    font-weight: bold;
+}
+.current.green::before {
+    content: url("../graphics/star-green.gif");
+    margin-right: 5px;
+}
+.current.pink::before {
+    content: url("../graphics/star-pink.gif");
+    margin-right: 5px;
+}
+.current.orange::before {
+    content: url("../graphics/star-orange.gif");
+    margin-right: 5px;
+}
+.current.blue::before {
+    content: url("../graphics/star-blue.gif");
+    margin-right: 5px;
+}
+.current.yellow::before {
+    content: url("../graphics/star-yellow.gif");
+    margin-right: 5px;
+}
+hr.dashed {
+    border-top: 1px dashed var(--color-brown);
+}
+.outlink {
+    color: hotpink;
+}
+.cork-link {
+    vertical-align: bottom;
+    margin-left: 10px;
+    color: var(--color-brown);
+    text-decoration: underline 1px dashed;
+}
+
+.outlink:after {
+    content: url("/assets/graphics/outlink2.png");
+    padding-left: 3px;
+    vertical-align: top;
+}
+.heart {
+    color: darkred;
+}
+.green {
+    color: var(--color-green);
+}
+.pink {
+    color: var(--color-pink);
+}
+.orange {
+    color: var(--color-orange);
+}
+.blue {
+    color: var(--color-blue);
+}
+.yellow {
+    color: var(--color-yellow);
+}
+.heart:hover {
+    background-color: darkred;
+}
+.green:hover {
+    background-color: var(--color-green);
+}
+.pink:hover {
+    background-color: var(--color-pink);
+}
+.orange:hover {
+    background-color: var(--color-orange);
+}
+.blue:hover {
+    background-color: var(--color-blue);
+}
+.yellow:hover {
+    background-color: var(--color-yellow);
+}
+.green, .pink, .orange, .blue, .yellow {
+    font-style: normal;
+}
+.green:hover, .orange:hover, .blue:hover, .pink:hover, .heart:hover, .yellow:hover {
+    color: var(--color-white);
+    font-style: normal;
+}
+.align-right {
+    text-align: right;
+}
+.align-center {
+    text-align: center;
+}
+.vert_scroll {
+    width: auto;
+    white-space: nowrap;
+    overflow-x: scroll;
+    margin-top: 10px;
+    margin-right: 10px;
+}
+.vert_scroll img {
+    padding: 3px;
+    margin: 2px;
+    border: 1px dotted;
+    height: 180px;
+    width: 180px;
+}
+.mybutton {
+    width: 88px;
+    height: 31px;
+    image-rendering: crisp-edges;
+}
+.buttons {
+    image-rendering: pixelated;
+    width: 88px;
+    height: 31px;
+    border-radius: 3px;
+    border: 2px dotted dodgerblue;
+}
+button {
+    background-color: aliceblue;
+    border: 2px dotted dodgerblue;
+    border-radius: 3px;
+}
+button:hover {
+    cursor: pointer;
+    scale: 1.2;
+}
+.btn-link {
+    height: 31px;
+    width: 88px;
+    vertical-align: top;
+    margin-bottom: 7px;
+}
+footer {
+    margin-top: 2.5rem;
+}
+    /* Sticker Sheet Club Styling
+    http://www.stickersheetclub.neocities.org 
+    */
+    .ssclub {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    /* Table Styling */
+    #ssclubheader_1, #ssclubstickers_1, #ssclubfooter_1 {
+      background-color: var(--color-blue); 
+      border: 2px solid var(--color-blue);
+      width: 400px;
+      max-width: 100%;
+    }
+		/* Space between the stickers */
+	td img {
+      padding:0px 8px;
+    }
+    .stickersimg img {
+        filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.15));
+	}
+    .stickersimg img:hover, .stickersimg img:focus {
+        transform: translate(2px,2px)
+    }
+@media only screen and (max-width: 1100px) {
+    body {
+        background-image: url("../graphics/kobato-clamp.jpg");
+        background-size: contain;
+        background-position: top 10% right -40%;
+        background-repeat: no-repeat;
+        overflow-x: hidden;
+    }
+    body::before {
+        display: none;
+    }
+    .base {
+        border-right: 6px dotted var(--color-black);
+        background-color: var(--color-white);
+    }
+}
+@media only screen and (max-width: 820px) {
+    html {
+        font-size: 110%;
+    }
+    .paragraph {
+        text-align: left;
+    }
+    .paragraph.align-center {
+        text-align: center;
+    }
+    .content-wrapper {
+        align-items: center;
+        justify-content: center;
+    }
+    footer {
+        margin-bottom: 2rem;
+    }
+}
+@media only screen and (max-width: 650px) {
+        .content-wrapper {
+            flex-direction: column-reverse;
+        }
+}
+@media only screen and (max-width: 480px) {
+    .content-wrapper {
+        text-align: center;
+    }
+    html {
+        font-size: 100%;
+    }
+    .heading {
+        font-size: 1.75rem;
+    }
+    .sub-head {
+        font-size: 1.45rem;
+    }
+    .btn-nav {
+        font-size: 1.15rem;
+    }
+    .menu {
+        max-width: 100%;
+    }
+}

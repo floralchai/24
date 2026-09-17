@@ -1,0 +1,73 @@
+body {
+  background-image:
+    radial-gradient(white 1px, transparent 1px),
+    radial-gradient(white 1px, transparent 1px),
+    url("../graphics/bg-orange.gif");
+}
+
+body::before {
+    background: url("../graphics/chime-orange.png") no-repeat center/contain;
+}
+.base {
+  border-color: var(--color-orange);
+}
+hr.sunflower-line {
+  border: none;
+  height: 39px; 
+  background-image: url('../graphics/sunflower-line.gif'); 
+  background-repeat: no-repeat; 
+  background-position: center;
+  background-size: contain;
+}
+.thought {
+  list-style-position: inside;
+}
+summary {
+  color: var(--color-black);
+  padding: 5px;
+  border-radius: 5px;
+  width: fit-content;
+  margin: 8px auto;
+  border: 1px solid darkorange;
+}
+summary::marker {
+  content: " + "; /* Change to your desired symbol or emoji */
+  color: orange; /* Example: change color */
+}
+details[open] summary::marker {
+  content: " - "; /* Change symbol when details is open */
+}
+#statuscafe-username > a{
+  text-decoration: none;
+}
+.entries {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.entry {
+  outline: 6px solid var(--color-pink);
+  border: 3px dotted var(--color-orange);
+  padding: 0.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-right: 1rem;
+}
+.title a {
+  text-decoration: underline dotted 3px;
+  color: darkorange;
+}
+.title a:hover {
+  color: var(--color-white);
+  background-color: darkorange;
+  text-decoration: underline dotted 3px;
+}
+.date, .title a {
+  font-size: 0.9rem;
+}
+@media only screen and (max-width: 480px) {
+  .entry {
+    flex-direction: column;
+  }
+}
