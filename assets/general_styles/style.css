@@ -13,9 +13,11 @@ body::before {
 }
 .code {
     background-color: var(--color-brown);
+    color: var(--color-brown)
 }
 .code:hover, .code:focus {
-    color: var(--color-white);
+    color: var(--color-brown);
+    background-color: var(--color-white);
 }
 .bushes {
     border: 10px solid;
