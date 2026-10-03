@@ -26,7 +26,7 @@ body::before {
   margin-top: 8px;
   width: 100%;
   border: 1.5px dotted var(--color-black);
-  background-color: var(--color-green);
+  background-color: var(--color-blue);
 }
 .polaroid {
   background-color: #fff;
