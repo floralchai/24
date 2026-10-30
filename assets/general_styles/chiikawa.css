@@ -9,10 +9,8 @@
     --color-black: #000000;
 }
 body {
-    background-image: url("/assets/graphics/sakura-pattern.png");
+    background-image: url("../graphics/sakura-pattern.png");
     background-repeat: repeat;
-    background-position: top right;
-    background-attachment: scroll;
     background-size: auto;
     color: var(--color-black);
     scroll-behavior: smooth;
@@ -43,6 +41,7 @@ body {
 .link:hover {
     background-color: aliceblue;
     text-decoration: underline solid 3px skyblue;
+    color: #aeaeae;
 }
 .star {
     vertical-align: middle;
