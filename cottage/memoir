@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/web/20251202111837cs_/https://floralchai.neocities.org/assets/general_styles/scrollbar.css">
+    <link rel="stylesheet" href="/web/20251202111837cs_/https://floralchai.neocities.org/assets/general_styles/root.css">
+    <link rel="stylesheet" href="/web/20251202111837cs_/https://floralchai.neocities.org/chiikawa-clique/chiikawa.css">
+    <link rel="icon" type="image/x-icon" href="/web/20251202111837im_/https://floralchai.neocities.org/assets/chiikawa-clique/favicon.png">
+    <title>Chiikawas</title>
+</head>
+<body>
+ 
+    <div class="logo"></div>
+
+    <!-----------MAIN CONTENT----------->
+    <main class="base">
+        <nav class="navi">
+            <a class="nav-link green" href="index.html">index</a>
+            <a class="nav-link blue" href="rules.html">rules</a>
+            <a class="nav-link orange" href="codes.html">codes</a>
+            <a class="nav-link yellow" href="list.html">list</a>
+        </nav>
+        <section>
+            <h1><img class="star" src="/web/20251202111837im_/https://floralchai.neocities.org/assets/graphics/star_s_04.gif"> Welcome!</h1>
+            <p class="paragraph">A little guestbook I called as memoir for little chit chat on the site, If you want you are welcomed to talk</p>
+            <h2><img class="star" src="/web/20251202111837im_/https://floralchai.neocities.org/assets/graphics/star_s_18.gif"> How to join?</h2>
+            <ol class="paragraph">
+                <li>Read up the <a class="blue" href="rules.html">rules</a>, it's important to follow</li>
+                <li>After that pick up a <span class="green">code</span> in <a class="orange" href="codes.html">codes</a> page. Then, put the code in your website</li>
+                <li>Fill out the form in <a class="purple" href="join.html">join</a> page, "add" section.</li>
+                <li>Now you just need to wait and we will add you to the clique</li>
+            </ol>
+            <section class="box paragraph">
+            <div id="c_widget"></div>
+            </section>
+            <p class="paragraph">
+                Let me know in <a class="link" href="inquiries.html">this page</a> if you've any suggestions or inquiries, <span class="purple">this is optional</span>
+            </p>
+            <section class="align-center">
+                <p class="paragraph">You can link us back too! Also optional</p>
+                <img class="chiikawasbutton" src="/web/20251202111837im_/https://floralchai.neocities.org/assets/chiikawa-clique/chiikawas-button.png">
+            </section>
+        </section>
+        <footer>
+            <hr class="dashed">
+            <a class="pink" href="index.html">Chiikawas themed</a> ❤︎ 2025, the contents and design is by <a class="link" href="/web/20251202111837/https://floralchai.neocities.org/index.html">Flora</a>. Part of <a class="link" href="/web/20251202111837/https://floralchai.neocities.org/index.html">Floralchai</a>
+            <br>
+            This is a nonprofit website | Chiikawa series © to <span class="pink">Nagano</span>            
+        </footer>
+    </main>
+<script src="comment-widget.js"></script></body>
+</html>
