@@ -62,7 +62,7 @@ textarea, input {
     margin-top: .5rem;
     max-width: 100%;
 }
-textarea, input {
+textarea {
     width: 600px;
     height: 100px;
     border: 2px solid #c4c4c4;
