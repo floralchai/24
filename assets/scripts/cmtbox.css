@@ -123,17 +123,19 @@ body {
 textarea, input {
     font: normal .65rem 'Inter', sans-serif;
     background: #fefefe;
-    border: 0px;
     color: #777;
     padding: 0.5em;
     resize: none;
     float: none;
     margin-top: .5rem;
     max-width: 100%;
+    width: 600px;
+    height: 150px;
     display: block;
-}
-textarea {
     border: 2px solid #c4c4c4;
+}
+input {
+    width: 400px;
 }
 .pink {
     color: var(--color-pink);
