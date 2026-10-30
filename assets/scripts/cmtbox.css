@@ -54,6 +54,185 @@
 */
 
 /* Main */
+:root {
+    --color-white: #fff;
+    --color-yellow: #f4d166;
+    --color-pink: #f7adbb;
+    --color-green: #b1d570;
+    --color-orange: #f8ab66;
+    --color-blue: #64cced;
+    --color-purple: #e0c4e3;
+    --color-black: #000000;
+}
+body {
+    background-image: url("../graphics/sakura-pattern.png");
+    background-repeat: repeat;
+    background-size: auto;
+    color: var(--color-black);
+    scroll-behavior: smooth;
+}
+.base {
+    font-family: "SourceSerif4", 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    background-repeat: no-repeat;
+    background-position: top left;
+    background-origin: content-box;
+    background-size: 80%;
+}
+.navi {
+    font-family: "Inter", Verdana, Geneva, Tahoma, sans-serif;
+    font-size:  clamp(1.25rem, -0.875rem + 8.333vw, 2.25rem);
+    margin-top: calc(40% - 15vh);
+}
+.navi a {
+    text-decoration: underline dotted 5px;
+    font-weight: bolder;
+}
+.nav-link, h1, h2, h3, p {
+    margin-left: 1rem;
+}
+.link {
+    color: #aeaeae;
+    text-decoration: none;
+}
+.link:hover {
+    background-color: aliceblue;
+    text-decoration: underline solid 3px skyblue;
+    color: #aeaeae;
+}
+.star {
+    vertical-align: middle;
+}
+.example {
+    display: inline-block;
+    width: 300px;
+    text-align: center;
+}
+textarea, input {
+    font: normal .65rem 'Inter', sans-serif;
+    background: #fefefe;
+    border: 0px;
+    color: #777;
+    padding: 0.5em;
+    resize: none;
+    float: none;
+    margin-top: .5rem;
+    max-width: 100%;
+    display: block;
+}
+textarea {
+    border: 2px solid #c4c4c4;
+    border-radius: 6px;
+}
+.pink {
+    color: var(--color-pink);
+}
+.yellow {
+    color: var(--color-yellow);
+}
+.yellow:hover, .yellow:focus {
+    color: var(--color-white);
+    background-color: var(--color-yellow);
+}
+.green {
+    color: var(--color-green);
+}
+.purple {
+    color: var(--color-purple);
+}
+.purple:hover, .purple:focus {
+    color: var(--color-white);
+    background-color: var(--color-purple);
+}
+.blue {
+    color: var(--color-blue);
+}
+.orange {
+    color: var(--color-orange);
+}
+footer {
+    color: #777;
+    font-size: 0.6rem;
+    text-align: center;
+}
+.box {
+    border-left: solid 5px var(--color-black);
+    background-color: snow;
+    padding-left: 1rem;
+    width: 800px;
+    max-width: 100%;
+}
+button, .vote {
+    color: var(--color-white);
+    background-color: var(--color-black);
+    font-family: "SourceSerif4", 'Trebuchet MS', 'Lucida Sans Unicode', Arial, sans-serif;
+    box-shadow: none;
+}
+button:hover, button:active, .vote:hover, .vote:active, #pagination button:hover, #pagination button:active {
+    color: var(--color-black);
+    background-color: var(--color-white);
+    border: 3px dotted var(--color-black);
+    scale: none;
+}
+label {
+    font-size: 0.8rem;
+    text-align: justify;
+    line-height: 1.75rem;
+    word-spacing: 0.1rem;
+}
+  .hidden { 
+    display: none;
+  }
+  .success { 
+    color: green;
+  }
+  .error { 
+    color: darkred; 
+  }
+  .required { 
+    color: red;
+  }
+  #pagination button {
+    border: 1px solid black;
+    margin: 3px;
+  }
+  .success, .error, .required {
+    font-size: 0.8rem;
+    text-align: justify;
+    line-height: 1.75rem;
+    word-spacing: 0.1rem;
+  }
+  .join-section {
+    max-width: 100%;
+    border: 2px solid #c4c4c4;
+    border-radius: 6px;
+    background-color: #fffefc;
+    border-radius: 1rem;
+    padding: 0.8rem 1rem;
+    margin-bottom: 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+  }
+  .join-section a {
+    text-decoration: none;
+    margin: 0 1rem;
+    font-weight: 600;
+    color: var(--color-black);
+  }
+  .join-section a:hover {
+    text-decoration: underline;
+    font-style: italic;
+  }
+.char-icon {
+  width: 30px;
+  height: auto;
+  margin: 0 4px;
+  vertical-align: bottom;
+}
+a {
+    text-decoration-thickness: 3px;
+}
+
 #c_widget {
     box-sizing: border-box;
     height: 100%;
@@ -217,4 +396,27 @@ button {
 }
 button:hover {
     scale: none;
+}
+
+
+@media only screen and (max-width: 1300px) {
+    body {
+        background-size: 35%;
+        background-position: top right;
+    }
+    .base {
+        background-size: 50%;
+    }
+    .base {
+        max-width: 100%;
+        width: 900px;
+    }
+}
+@media only screen and (max-width: 480px) {
+    body {
+        background-size: contain;
+    }
+    .navi {
+        margin-top: calc(110% - 5vh);
+    }
 }
