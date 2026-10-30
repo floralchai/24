@@ -61,6 +61,7 @@ textarea, input {
     float: none;
     margin-top: .5rem;
     max-width: 100%;
+    display: block;
 }
 textarea {
     border: 2px solid #c4c4c4;
@@ -191,9 +192,6 @@ a {
 @media only screen and (max-width: 480px) {
     body {
         background-size: contain;
-    }
-    .base {
-        background-image: none;
     }
     .navi {
         margin-top: calc(110% - 5vh);
