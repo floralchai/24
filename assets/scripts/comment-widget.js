@@ -17,8 +17,8 @@
 */
 
 // The values in this section are REQUIRED for the widget to work! Keep them in quotes!
-const s_stylePath = "cmtbox.css"
-const s_formId = "1FAIpQLSeWfvuC_DsO3RNcMqI0YRscqaglKEWHtYi3j6tgTwIDDOlSsQ"
+const c_widgetScriptUrl = document.currentScript.src;
+const s_stylePath = new URL("cmtbox.css", c_widgetScriptUrl).href;const s_formId = "1FAIpQLSeWfvuC_DsO3RNcMqI0YRscqaglKEWHtYi3j6tgTwIDDOlSsQ"
 const s_nameId = "1043589293"
 const s_websiteId = "1171504669"
 const s_textId = "1956474156"
