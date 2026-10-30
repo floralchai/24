@@ -118,6 +118,7 @@
     color: #777;
     padding: 0.5em;
     margin-top: .5rem;
+    border: 2px solid #c4c4c4;
 }
 .c-input:focus {
     border: 2px solid var(--color-brown);
