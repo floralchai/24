@@ -63,13 +63,13 @@ textarea, input {
     max-width: 100%;
 }
 textarea {
-    width: 250px;
+    width: max-content;
     height: 100px;
     border: 2px solid #c4c4c4;
     border-radius: 6px;
 }
 .input {
-    width: 300px;
+    width: max-content;
     height: auto;
     border: 2px solid #c4c4c4;
     border-radius: 6px;
