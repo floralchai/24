@@ -130,9 +130,11 @@ textarea, input {
     margin-top: .5rem;
     max-width: 100%;
     width: 600px;
-    height: 150px;
     display: block;
     border: 2px solid #c4c4c4;
+}
+textarea {
+    height: 150px;
 }
 input {
     width: 400px;
