@@ -403,11 +403,7 @@ button:hover {
 
 @media only screen and (max-width: 1300px) {
     body {
-        background-size: 35%;
         background-position: top right;
-    }
-    .base {
-        background-size: 50%;
     }
     .base {
         max-width: 100%;
@@ -415,9 +411,6 @@ button:hover {
     }
 }
 @media only screen and (max-width: 480px) {
-    body {
-        background-size: contain;
-    }
     .navi {
         margin-top: calc(110% - 5vh);
     }
