@@ -28,7 +28,7 @@ const s_sheetId = "1KIRN9S4OJdLCLOZGTKJqbPwV8SVidExfFcI6jX0F6Ag"
 
 // The values below are necessary for accurate timestamps, I've filled it in with EST as an example
 const s_timezone = -5; // Your personal timezone (Example: UTC-5:00 is -5 here, UTC+10:30 would be 10.5)
-const s_daylightSavings = true; // If your personal timezone uses DST, set this to true
+const s_daylightSavings = false; // If your personal timezone uses DST, set this to true
 // For the dates DST start and end where you live: [Month, Weekday, which number of that weekday, hour (24 hour time)]
 const s_dstStart = ['March', 'Sunday', 2, 2]; // Example shown is the second Sunday of March at 2:00 am
 const s_dstEnd = ['November', 'Sunday', 1, 2]; // Example shown is the first Sunday of November at 2:00 am
