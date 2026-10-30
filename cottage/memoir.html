@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../assets/general_styles/root.css">
-    <link rel="icon" type="image/x-icon" href="../assets/graphics/sunflower.png">
+    <link rel="stylesheet" href="../assets/general_styles/root.css">
+    <link rel="icon" type="image/x-icon" href="../assets/scripts/cmtbox.css">
     <title>Memoir</title>
 </head>
 <body>
@@ -23,13 +24,27 @@
                 <li>Confide with love and care, express yourself freely</li>
             </ol>
             <section class="box paragraph">
-            <div id="c_widget"></div>
-            </section>
+<form action="https://api.staticforms.dev/submit" method="POST">
+  <input type="hidden" name="apiKey" value="sf_6ab17fbaca9af626f251216e" />
+  <input type="hidden" name="subject" value="Memoir guestbook submission" />
+
+  <label>Name
+    <input type="text" name="name" required />
+  </label>
+
+  <label>Email
+    <input type="email" name="email" required />
+  </label>
+
+  <label>Message
+    <textarea name="message" required></textarea>
+  </label>
+
+  <button type="submit">Send</button>
+</form>            </section>
             <p class="paragraph">
                 Let me know in <a class="link">this page</a> if you've any suggestions or inquiries, <span class="purple">this is optional</span>
             </p>
-            <section class="align-center">
-            </section>
         </section>
         <footer>
             <hr class="dashed">
