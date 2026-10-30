@@ -203,6 +203,13 @@
     margin-right: 4px;
     margin-left: 4px;
 }
+.c-input {
+    width: 500px;
+    border: 2px solid #c4c4c4;
+}
+.c-label {
+    display: block;
+}
 button {
     box-shadow: none;
     border: none;
