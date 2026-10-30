@@ -18,13 +18,13 @@
 
 // The values in this section are REQUIRED for the widget to work! Keep them in quotes!
 const s_stylePath = "../../assets/general_styles/cmtbox.css"
-const s_formId = "1FAIpQLSfBUJOTJWwm3qbP6YYgB9zfm2R_mFxoHWgtH1odwsKb8l-yxQ"
-const s_nameId = "165746782"
-const s_websiteId = "15406053"
-const s_textId = "336092648"
-const s_pageId = "2084083789"
-const s_replyId = "1833128231"
-const s_sheetId = "1UL01WzAc8JdBgskQVyMbKqxJGuNqol5Ge5cxhSXMzMA"
+const s_formId = "1FAIpQLSeWfvuC_DsO3RNcMqI0YRscqaglKEWHtYi3j6tgTwIDDOlSsQ"
+const s_nameId = "1043589293"
+const s_websiteId = "1171504669"
+const s_textId = "1956474156"
+const s_pageId = "655547644"
+const s_replyId = "2137349924"
+const s_sheetId = "1KIRN9S4OJdLCLOZGTKJqbPwV8SVidExfFcI6jX0F6Ag"
 
 // The values below are necessary for accurate timestamps, I've filled it in with EST as an example
 const s_timezone = 7 // Your personal timezone (Example: UTC-5:00 is -5 here, UTC+10:30 would be 10.5)
