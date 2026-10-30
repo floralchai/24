@@ -10,10 +10,10 @@
 }
 body {
     background-image: url("/assets/graphics/sakura-pattern.png");
-    background-repeat: no-repeat, repeat-x, repeat;
+    background-repeat: repeat;
     background-position: top right;
     background-attachment: scroll;
-    background-size: auto, 35%, auto;
+    background-size: auto;
     color: var(--color-black);
     scroll-behavior: smooth;
 }
