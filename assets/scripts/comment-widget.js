@@ -2,43 +2,48 @@
     (PLEASE DO NOT DELETE THIS HEADER OR CREDIT!)
 
     Based on the comment widget by Ayano (https://virtualobserver.moe/)
-    Modified to use a Google Apps Script web app instead of Google Forms.
+    Flow: on-site form -> Google Forms -> Google Sheet -> comments shown on the site.
 
-    User customizable settings below!
-    Do not delete any settings even if you aren't using them! It could break the program.
-
-    After filling out your options, just paste this anywhere you want a comment section
-    (But change the script src URL to wherever you have this widget stored on your site!)
+    Paste this anywhere you want a comment section
+    (change the script src to wherever you store this file; cmtbox.css must be next to it):
 
         <div id="c_widget"></div>
-        <script src="comment-widget.js"></script>
+        <script src="comment-widget-forms.js"></script>
 
-    Keep cmtbox.css in the same folder as this file.
+    REQUIREMENTS
+    - The Google Form must have these questions, titled EXACTLY (they become the sheet's column headers):
+      Name, Website, Text, Page, Reply
+    - The responses Sheet must be shared as "Anyone with the link: Viewer" so the site can read it.
 */
 
-// REQUIRED: paste your Apps Script Web App URL (ends with /exec). Keep it in quotes!
-const s_scriptUrl = "https://script.google.com/macros/s/AKfycbwxHH6vCIqvEXzKzePuej8kZOcbCb4sAwKkrczEpFe2iY5lcTkaoKTkgTQE8oMGBoZBQw/exec";
-
+// REQUIRED values - keep them in quotes!
 const c_widgetScriptUrl = document.currentScript.src;
 const s_stylePath = new URL("cmtbox.css", c_widgetScriptUrl).href;
+const s_formId = "1FAIpQLSeWfvuC_DsO3RNcMqI0YRscqaglKEWHtYi3j6tgTwIDDOlSsQ";
+const s_nameId = "1043589293";
+const s_websiteId = "1171504669";
+const s_textId = "1956474156";
+const s_pageId = "655547644";
+const s_replyId = "2137349924";
+const s_sheetId = "1KIRN9S4OJdLCLOZGTKJqbPwV8SVidExfFcI6jX0F6Ag";
 
-// The values below are necessary for accurate timestamps (EST shown as an example)
-const s_timezone = 7; // Your timezone offset (UTC+7 = 7, UTC-5 = -5, UTC+10:30 = 10.5)
-const s_daylightSavings = false; // If your timezone uses DST, set this to true
-const s_dstStart = ['March', 'Sunday', 2, 2]; // [Month, Weekday, which number of that weekday, hour (24h)]
+// Timestamps
+const s_timezone = 7; // Your timezone (UTC+7 = 7, UTC-5 = -5, UTC+10:30 = 10.5)
+const s_daylightSavings = false;
+const s_dstStart = ['March', 'Sunday', 2, 2];
 const s_dstEnd = ['November', 'Sunday', 1, 2];
 
-// Misc - Other random settings
+// Misc
 const s_commentsPerPage = 5;
-const s_maxLength = 500;      // keep in sync with MAX_TEXT in Code.gs
-const s_maxLengthName = 16;   // keep in sync with MAX_NAME in Code.gs
+const s_maxLength = 500;
+const s_maxLengthName = 16;
 const s_commentsOpen = true;
 const s_collapsedReplies = true;
 const s_longTimestamp = false;
 let s_includeUrlParameters = false;
 const s_fixRarebitIndexPage = false;
 
-// Word filter - Censor profanity, etc
+// Word filter
 const s_wordFilterOn = false;
 const s_filterReplacement = '****';
 const s_filteredWords = [
@@ -61,7 +66,7 @@ const s_submitButtonLabel = 'Submit';
 const s_loadingText = 'Loading comments...';
 const s_noCommentsText = 'No comments yet';
 const s_closedCommentsText = 'Comments are closed temporarily';
-const s_errorText = 'Could not load or send comments right now. Please try again later.';
+const s_errorText = 'Could not load comments right now. Please try again later.';
 const s_websiteText = 'Website';
 const s_replyButtonText = 'Reply';
 const s_replyingText = 'Replying to';
@@ -70,7 +75,7 @@ const s_leftButtonText = '<<';
 const s_rightButtonText = '>>';
 
 /*
-    DO NOT edit below this point unless you are confident you know what you're doing!
+    DO NOT edit below this point unless you know what you're doing!
 */
 
 if (s_fixRarebitIndexPage) { s_includeUrlParameters = true; }
@@ -85,7 +90,7 @@ document.getElementsByTagName('head')[0].appendChild(c_cssLink);
 // HTML
 const v_mainHtml = `
     <div id="c_inputDiv">
-        <form id="c_form"></form>
+        <form id="c_form" method="post" target="c_hiddenIframe" action="https://docs.google.com/forms/d/e/${s_formId}/formResponse"></form>
     </div>
     <div id="c_container">${s_loadingText}</div>
 `;
@@ -93,18 +98,18 @@ const v_formHtml = `
     <h2 id="c_widgetTitle">${s_widgetTitle}</h2>
 
     <div id="c_nameWrapper" class="c-inputWrapper">
-        <label class="c-label c-nameLabel" for="c_name">${s_nameFieldLabel}</label>
-        <input placeholder="Name" class="c-input c-nameInput" name="name" id="c_name" type="text" maxlength="${s_maxLengthName}" required>
+        <label class="c-label c-nameLabel" for="entry.${s_nameId}">${s_nameFieldLabel}</label>
+        <input placeholder="Name" class="c-input c-nameInput" name="entry.${s_nameId}" id="entry.${s_nameId}" type="text" maxlength="${s_maxLengthName}" required>
     </div>
 
     <div id="c_websiteWrapper" class="c-inputWrapper">
-        <label class="c-label c-websiteLabel" for="c_website">${s_websiteFieldLabel}</label>
-        <input placeholder="https://example.com" class="c-input c-websiteInput" name="website" id="c_website" type="url" pattern="https://.*">
+        <label class="c-label c-websiteLabel" for="entry.${s_websiteId}">${s_websiteFieldLabel}</label>
+        <input placeholder="https://example.com" class="c-input c-websiteInput" name="entry.${s_websiteId}" id="entry.${s_websiteId}" type="url" pattern="https://.*">
     </div>
 
     <div id="c_textWrapper" class="c-inputWrapper">
-        <label class="c-label c-textLabel" for="c_text">${s_textFieldLabel}</label>
-        <textarea placeholder="Message me any topics related to psychology or IT is the best!" class="c-input c-textInput" name="text" id="c_text" rows="4" cols="50" maxlength="${s_maxLength}" required></textarea>
+        <label class="c-label c-textLabel" for="entry.${s_textId}">${s_textFieldLabel}</label>
+        <textarea placeholder="Message me any topics related to psychology or IT is the best!" class="c-input c-textInput" name="entry.${s_textId}" id="entry.${s_textId}" rows="4" cols="50" maxlength="${s_maxLength}" required></textarea>
     </div>
 
     <input id="c_submitButton" name="c_submitButton" type="submit" value="${s_submitButtonLabel}" disabled>
@@ -128,101 +133,128 @@ if (s_wordFilterOn) {
     v_filteredWords = new RegExp(String.raw`\b(${v_filteredWords})\b`, 'ig');
 }
 
-// Submit button (dummy if comments are closed)
+// Submit button (dummy when closed)
 let c_submitButton;
 if (s_commentsOpen) { c_submitButton = document.getElementById('c_submitButton'); }
 else { c_submitButton = document.createElement('button'); }
 
-// Page path used to group comments
+// Hidden page input
 let v_pagePath = window.location.pathname;
 if (s_includeUrlParameters) { v_pagePath += window.location.search; }
 if (s_fixRarebitIndexPage && v_pagePath == '/') { v_pagePath = '/?pg=1'; }
-
-// Hidden honeypot field (bots fill it, humans never see it)
-const c_honeypot = document.createElement('input');
-c_honeypot.type = 'text'; c_honeypot.name = 'hp'; c_honeypot.id = 'c_hp';
-c_honeypot.tabIndex = -1; c_honeypot.autocomplete = 'off';
-c_honeypot.style.cssText = 'position:absolute;left:-9999px;opacity:0;height:0;width:0;';
-c_form.appendChild(c_honeypot);
+const c_pageInput = document.createElement('input');
+c_pageInput.value = v_pagePath; c_pageInput.type = 'text'; c_pageInput.style.display = 'none';
+c_pageInput.id = 'entry.' + s_pageId; c_pageInput.name = c_pageInput.id;
+c_form.appendChild(c_pageInput);
 
 // "Replying to..." text
 const c_replyingText = document.createElement('span');
 c_replyingText.style.display = 'none'; c_replyingText.id = 'c_replyingText';
 c_form.appendChild(c_replyingText);
 
-// Current reply target (comment ID), '' when not replying
-let v_replyTo = '';
+// Hidden reply input
+const c_replyInput = document.createElement('input');
+c_replyInput.type = 'text'; c_replyInput.style.display = 'none';
+c_replyInput.id = 'entry.' + s_replyId; c_replyInput.name = c_replyInput.id;
+c_form.appendChild(c_replyInput);
 
-// ---------------------------------------------------------------
-// Sending a comment
-// ---------------------------------------------------------------
+// Hidden iframe that catches Google Forms' default "response recorded" page
+let v_submitted = false;
+const c_hiddenIframe = document.createElement('iframe');
+c_hiddenIframe.id = 'c_hiddenIframe'; c_hiddenIframe.name = 'c_hiddenIframe';
+c_hiddenIframe.style.display = 'none';
+c_hiddenIframe.addEventListener('load', function () { if (v_submitted) { fixFrame(); } });
+c_form.appendChild(c_hiddenIframe);
+
 if (s_commentsOpen) {
-    c_form.addEventListener('submit', function (event) {
-        event.preventDefault();
+    c_form.addEventListener('submit', function () {
         c_submitButton.disabled = true;
-
-        const payload = {
-            name: document.getElementById('c_name').value,
-            website: document.getElementById('c_website').value,
-            text: document.getElementById('c_text').value,
-            page: v_pagePath,
-            reply: v_replyTo,
-            hp: c_honeypot.value
-        };
-
-        // text/plain avoids a CORS preflight, which Apps Script doesn't support
-        fetch(s_scriptUrl, {
-            method: 'POST',
-            headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-            body: JSON.stringify(payload)
-        })
-            .then(response => response.json())
-            .then(result => {
-                if (result.result !== 'success') {
-                    alert(result.error || s_errorText);
-                    c_submitButton.disabled = false;
-                    return;
-                }
-                getComments(true);
-            })
-            .catch(() => {
-                alert(s_errorText);
-                c_submitButton.disabled = false;
-            });
+        v_submitted = true;
     });
 }
 
+// After Google Forms accepts the submission, reload the comments
+let v_commentCount = 0; // how many comments this page had at the last load
+function fixFrame() {
+    v_submitted = false;
+    c_hiddenIframe.srcdoc = '';
+    const before = v_commentCount;
+    let first = true;
+    // The Sheet can lag a few seconds behind the Form, so retry until the new comment shows up
+    function attempt(n) {
+        getComments(first).then(function (count) {
+            first = false;
+            if (count <= before && n < 6) {
+                setTimeout(function () { attempt(n + 1); }, 2000);
+            }
+        });
+    }
+    setTimeout(function () { attempt(1); }, 1500);
+}
+
 // ---------------------------------------------------------------
-// Loading comments
+// Loading comments from the Google Sheet
 // ---------------------------------------------------------------
 function getComments(clearForm) {
     c_submitButton.disabled = true;
 
     if (clearForm) {
-        v_replyTo = '';
         c_replyingText.style.display = 'none';
         c_replyingText.textContent = '';
+        c_replyInput.value = '';
         if (s_commentsOpen) {
-            document.getElementById('c_name').value = '';
-            document.getElementById('c_website').value = '';
-            document.getElementById('c_text').value = '';
+            document.getElementById(`entry.${s_nameId}`).value = '';
+            document.getElementById(`entry.${s_websiteId}`).value = '';
+            document.getElementById(`entry.${s_textId}`).value = '';
         }
     }
 
-    const url = `${s_scriptUrl}?page=${encodeURIComponent(v_pagePath)}`;
-    fetch(url)
-        .then(response => response.json())
-        .then(result => {
-            if (result.result !== 'success') { throw new Error(result.error); }
-            const comments = result.comments || [];
-            if (comments.length == 0) { c_container.textContent = s_noCommentsText; }
-            else { displayComments(comments); }
-            c_submitButton.disabled = false;
-        })
-        .catch(() => {
-            c_container.textContent = s_errorText;
-            c_submitButton.disabled = false;
-        });
+    // Cache-buster so the browser never shows an old copy of the Sheet
+    const url = `https://docs.google.com/spreadsheets/d/${s_sheetId}/gviz/tq?tqx=out:json&_=${Date.now()}`;
+    return getSheet(url).then(result => {
+        // Remove the wrapper Google puts around the JSON
+        const json = JSON.parse(result.substring(result.indexOf('{'), result.lastIndexOf('}') + 1));
+
+        const pageIdx = json.table.cols.findIndex(col => col.label == 'Page');
+        const comments = [];
+
+        for (let r = 0; r < json.table.rows.length; r++) {
+            const row = json.table.rows[r].c;
+            const pageCell = row[pageIdx];
+            const pageVal = pageCell ? pageCell.v : '';
+            if (pageVal != v_pagePath) { continue; }
+
+            const comment = {};
+            for (let c = 0; c < json.table.cols.length; c++) {
+                comment[json.table.cols[c].label] = row[c] ? row[c].v : '';
+            }
+            comment.Timestamp2 = row[0] ? row[0].f : '';
+            if (comment.Name && comment.Text) { comments.push(comment); }
+        }
+
+        v_commentCount = comments.length;
+        if (comments.length == 0) { c_container.textContent = s_noCommentsText; }
+        else { displayComments(comments); }
+
+        c_submitButton.disabled = false;
+        return comments.length;
+    }).catch(() => {
+        c_container.textContent = s_errorText;
+        c_submitButton.disabled = false;
+        return v_commentCount;
+    });
+}
+
+function getSheet(url) {
+    return new Promise(function (resolve, reject) {
+        fetch(url).then(response => {
+            if (!response.ok) { reject('Could not find Google Sheet with that URL'); return; }
+            response.text().then(data => {
+                if (!data) { reject('Invalid data pulled from sheet'); return; }
+                resolve(data);
+            });
+        }).catch(reject);
+    });
 }
 
 // ---------------------------------------------------------------
@@ -233,17 +265,15 @@ function displayComments(comments) {
     a_commentDivs = [];
     c_container.innerHTML = '';
 
-    // Separate replies from main comments
-    const replies = comments.filter(c => c.reply);
-    const mainComments = comments.filter(c => !c.reply);
+    const replies = comments.filter(c => c.Reply);
+    const mainComments = comments.filter(c => !c.Reply);
 
-    // Pagination values
     v_amountOfPages = Math.max(1, Math.ceil(mainComments.length / s_commentsPerPage));
     if (v_pageNum > v_amountOfPages) { v_pageNum = v_amountOfPages; }
     v_commentMax = s_commentsPerPage * v_pageNum;
     v_commentMin = v_commentMax - s_commentsPerPage;
 
-    // Main comments, newest first
+    // Newest first
     mainComments.reverse();
     for (let i = 0; i < mainComments.length; i++) {
         const comment = createComment(mainComments[i]);
@@ -261,11 +291,11 @@ function displayComments(comments) {
         a_commentDivs.push(comment);
     }
 
-    // Replies (oldest first, under their parent)
+    // Replies under their parent comment
     for (let i = 0; i < replies.length; i++) {
-        const parentId = replies[i].reply;
+        const parentId = replies[i].Reply;
         const parentDiv = document.getElementById(parentId);
-        if (!parentDiv) { continue; } // parent was deleted
+        if (!parentDiv) { continue; } // parent comment was deleted
 
         const reply = createComment(replies[i]);
         let container = document.getElementById(parentId + '-replies');
@@ -318,43 +348,40 @@ function displayComments(comments) {
     }
 }
 
-// Create a basic comment element (used for comments and replies)
+// Create a comment element (comment or reply)
 function createComment(data) {
     const comment = document.createElement('div');
-    comment.id = data.id;
 
-    // Timestamp
-    const timestamps = convertTimestamp(data.timestamp);
+    const timestamps = convertTimestamp(data.Timestamp);
     const timestamp = s_longTimestamp ? timestamps[0] : timestamps[1];
 
-    // Name
+    // ID = Name + full timestamp (same scheme the replies use to find their parent)
+    comment.id = data.Name + '|--|' + data.Timestamp2;
+
     const name = document.createElement('h3');
-    let filteredName = data.name;
+    let filteredName = String(data.Name);
     if (s_wordFilterOn) { filteredName = filteredName.replace(v_filteredWords, s_filterReplacement); }
     name.innerText = filteredName;
     name.className = 'c-name';
     comment.appendChild(name);
 
-    // Time
     const time = document.createElement('span');
     time.innerText = timestamp;
     time.className = 'c-timestamp';
     comment.appendChild(time);
 
-    // Website (https only)
-    if (data.website && /^https:\/\//i.test(data.website)) {
+    if (data.Website && /^https:\/\//i.test(data.Website)) {
         const site = document.createElement('a');
         site.innerText = s_websiteText;
-        site.href = data.website;
+        site.href = data.Website;
         site.rel = 'nofollow noopener noreferrer';
         site.target = '_blank';
         site.className = 'c-site';
         comment.appendChild(site);
     }
 
-    // Text
     const text = document.createElement('p');
-    let filteredText = data.text;
+    let filteredText = String(data.Text);
     if (s_wordFilterOn) { filteredText = filteredText.replace(v_filteredWords, s_filterReplacement); }
     text.innerText = filteredText;
     text.className = 'c-text';
@@ -364,18 +391,14 @@ function createComment(data) {
 }
 
 // ---------------------------------------------------------------
-// Timestamps (server sends UTC ISO strings)
+// Timestamps (Google Sheets gives "Date(y,m,d,h,mi,s)", which is in the form/sheet's own timezone)
 // ---------------------------------------------------------------
-function convertTimestamp(iso) {
-    const utc = new Date(iso);
-    if (isNaN(utc.getTime())) { return ['', '']; }
-
-    // Shift to the configured timezone, then read the UTC fields as wall-clock time
-    const shifted = new Date(utc.getTime() + s_timezone * 60 * 60 * 1000);
-    let offsetDate = new Date(
-        shifted.getUTCFullYear(), shifted.getUTCMonth(), shifted.getUTCDate(),
-        shifted.getUTCHours(), shifted.getUTCMinutes(), shifted.getUTCSeconds()
-    );
+function convertTimestamp(timestamp) {
+    if (typeof timestamp !== 'string' || timestamp.indexOf('(') < 0) { return ['', '']; }
+    const vals = timestamp.split('(')[1].split(')')[0].split(',').map(Number);
+    const date = new Date(vals[0], vals[1], vals[2], vals[3], vals[4], vals[5]);
+    const timezoneDiff = (s_timezone * 60 + date.getTimezoneOffset()) * -1;
+    let offsetDate = new Date(date.getTime() + timezoneDiff * 60 * 1000);
     if (s_daylightSavings) { offsetDate = isDST(offsetDate); }
     return [offsetDate.toLocaleString(), offsetDate.toLocaleDateString()];
 }
@@ -422,18 +445,15 @@ function getMonthNum(month) {
 // ---------------------------------------------------------------
 function openReply(id) {
     if (c_replyingText.style.display == 'none') {
-        const parent = document.getElementById(id);
-        const parentName = parent ? parent.querySelector('.c-name').innerText : '';
-        c_replyingText.textContent = `${s_replyingText} ${parentName}...`;
-        v_replyTo = id;
+        c_replyingText.textContent = `${s_replyingText} ${id.split('|--|')[0]}...`;
+        c_replyInput.value = id;
         c_replyingText.style.display = 'block';
     } else {
         c_replyingText.textContent = '';
-        v_replyTo = '';
+        c_replyInput.value = '';
         c_replyingText.style.display = 'none';
     }
-    const inputDiv = document.getElementById('c_inputDiv');
-    if (inputDiv) { inputDiv.scrollIntoView({ behavior: 'smooth' }); }
+    document.getElementById('c_inputDiv').scrollIntoView({ behavior: 'smooth' });
 }
 
 function expandReplies(id) {
