@@ -131,12 +131,9 @@ textarea, input {
     margin-top: .5rem;
     max-width: 100%;
     display: block;
-    border-radius: 6px;
-
 }
 textarea {
     border: 2px solid #c4c4c4;
-    border-radius: 6px;
 }
 .pink {
     color: var(--color-pink);
@@ -219,7 +216,6 @@ label {
   .join-section {
     max-width: 100%;
     border: 2px solid #c4c4c4;
-    border-radius: 6px;
     background-color: #fffefc;
     border-radius: 1rem;
     padding: 0.8rem 1rem;
