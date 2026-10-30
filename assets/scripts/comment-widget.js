@@ -27,52 +27,44 @@ const s_replyId = "2137349924"
 const s_sheetId = "1KIRN9S4OJdLCLOZGTKJqbPwV8SVidExfFcI6jX0F6Ag"
 
 // The values below are necessary for accurate timestamps, I've filled it in with EST as an example
-const s_timezone = 7 // Your personal timezone (Example: UTC-5:00 is -5 here, UTC+10:30 would be 10.5)
-const s_daylightSavings = false // If your personal timezone uses DST, set this to true
+const s_timezone = -5; // Your personal timezone (Example: UTC-5:00 is -5 here, UTC+10:30 would be 10.5)
+const s_daylightSavings = true; // If your personal timezone uses DST, set this to true
 // For the dates DST start and end where you live: [Month, Weekday, which number of that weekday, hour (24 hour time)]
-const s_dstStart = ["March", "Sunday", 2, 2] // Example shown is the second Sunday of March at 2:00 am
-const s_dstEnd = ["November", "Sunday", 1, 2] // Example shown is the first Sunday of November at 2:00 am
+const s_dstStart = ['March', 'Sunday', 2, 2]; // Example shown is the second Sunday of March at 2:00 am
+const s_dstEnd = ['November', 'Sunday', 1, 2]; // Example shown is the first Sunday of November at 2:00 am
 
 // Misc - Other random settings
-const s_commentsPerPage = 10 // The max amount of comments that can be displayed on one page, any number >= 1 (Replies not counted)
-const s_maxLength = 800 // The max character length of a comment
-const s_maxLengthName = 16 // The max character length of a name
-const s_commentsOpen = true // Change to false if you'd like to close your comment section site-wide (Turn it off on Google Forms too!)
-const s_collapsedReplies = true // True for collapsed replies with a button, false for replies to display automatically
-const s_longTimestamp = true // True for a date + time, false for just the date
-let s_includeUrlParameters = false // Makes new comment sections on pages with URL parameters when set to true (If you don't know what this does, leave it disabled)
-const s_fixRarebitIndexPage = false // If using Rarebit, change to true to make the index page and page 1 of your webcomic have the same comment section
+const s_commentsPerPage = 5; // The max amount of comments that can be displayed on one page, any number >= 1 (Replies not counted)
+const s_maxLength = 500; // The max character length of a comment
+const s_maxLengthName = 16; // The max character length of a name
+const s_commentsOpen = true; // Change to false if you'd like to close your comment section site-wide (Turn it off on Google Forms too!)
+const s_collapsedReplies = true; // True for collapsed replies with a button, false for replies to display automatically
+const s_longTimestamp = false; // True for a date + time, false for just the date
+let s_includeUrlParameters = false; // Makes new comment sections on pages with URL parameters when set to true (If you don't know what this does, leave it disabled)
+const s_fixRarebitIndexPage = false; // If using Rarebit, change to true to make the index page and page 1 of your webcomic have the same comment section
 
 // Word filter - Censor profanity, etc
-const s_wordFilterOn = true // True for on, false for off
-const s_filterReplacement = "****" // Change what filtered words are censored with (**** is the default)
-const s_filteredWords = [
-  // Add words to filter by putting them in quotes and separating with commas (ie. 'heck', 'dang')
-  "fuck",
-  "bitch",
-  "bitches",
-  "motherfucker",
-  "sudicide",
-  "shit",
-  "nigga",
-  "black guy"
+const s_wordFilterOn = false; // True for on, false for off
+const s_filterReplacement = '****'; // Change what filtered words are censored with (**** is the default)
+const s_filteredWords = [ // Add words to filter by putting them in quotes and separating with commas (ie. 'heck', 'dang')
+    'heck', 'dang'
 ]
 
 // Text - Change what messages/text appear on the form and in the comments section (Mostly self explanatory)
-const s_widgetTitle = "<img class='star' src='../assets/graphics/star_s_03.gif'> Guestbook"
-const s_nameFieldLabel = "Name"
-const s_websiteFieldLabel = "Website"
-const s_textFieldLabel = ""
-const s_submitButtonLabel = "Submit"
-const s_loadingText = "Loading comments..."
-const s_noCommentsText = "No one comment here yet"
-const s_closedCommentsText = "Comments are closed"
-const s_websiteText = "Website" // The links to websites left by users on their comments
-const s_replyButtonText = "Reply" // The button for replying to someone
-const s_replyingText = "Replying to" // The text that displays while the user is typing a reply
-const s_expandRepliesText = "Show Replies"
-const s_leftButtonText = "<<"
-const s_rightButtonText = ">>"
+const s_widgetTitle = 'Leave a comment!';
+const s_nameFieldLabel = 'Name';
+const s_websiteFieldLabel = 'Website (Optional)';
+const s_textFieldLabel = '';
+const s_submitButtonLabel = 'Submit';
+const s_loadingText = 'Loading comments...';
+const s_noCommentsText = 'No comments yet!';
+const s_closedCommentsText = 'Comments are closed temporarily!';
+const s_websiteText = 'Website'; // The links to websites left by users on their comments
+const s_replyButtonText = 'Reply'; // The button for replying to someone
+const s_replyingText = 'Replying to'; // The text that displays while the user is typing a reply
+const s_expandRepliesText = 'Show Replies';
+const s_leftButtonText = '<<';
+const s_rightButtonText = '>>';
 
 /*
     DO NOT edit below this point unless you are confident you know what you're doing!
@@ -101,18 +93,18 @@ const v_formHtml = `
     <h2 id="c_widgetTitle">${s_widgetTitle}</h2>
 
     <div id="c_nameWrapper" class="c-inputWrapper">
-        <label class="c-label c-nameLabel" for="entry.${s_nameId}">${s_nameFieldLabel}</label><br>
-        <input placeholder="Kawa" class="c-input c-nameInput" name="entry.${s_nameId}" id="entry.${s_nameId}" type="text" maxlength="${s_maxLengthName}" required>
+        <label class="c-label c-nameLabel" for="entry.${s_nameId}">${s_nameFieldLabel}</label>
+        <input class="c-input c-nameInput" name="entry.${s_nameId}" id="entry.${s_nameId}" type="text" maxlength="${s_maxLengthName}" required>
     </div>
 
     <div id="c_websiteWrapper" class="c-inputWrapper">
-        <label class="c-label c-websiteLabel" for="entry.${s_websiteId}">${s_websiteFieldLabel}</label><br>
-        <input placeholder="https://example.com" class="c-input c-websiteInput" name="entry.${s_websiteId}" id="entry.${s_websiteId}" type="url" pattern="https://.*">
+        <label class="c-label c-websiteLabel" for="entry.${s_websiteId}">${s_websiteFieldLabel}</label>
+        <input class="c-input c-websiteInput" name="entry.${s_websiteId}" id="entry.${s_websiteId}" type="url" pattern="https://.*">
     </div>
 
     <div id="c_textWrapper" class="c-inputWrapper">
         <label class="c-label c-textLabel" for="entry.${s_textId}">${s_textFieldLabel}</label>
-        <textarea placeholder="Let me know you have joined the clique. Any suggestions are also welcomed!" class="c-input c-textInput" name="entry.${s_textId}" id="entry.${s_textId}" rows="4" cols="50"  maxlength="${s_maxLength}" required></textarea>
+        <textarea class="c-input c-textInput" name="entry.${s_textId}" id="entry.${s_textId}" rows="4" cols="50"  maxlength="${s_maxLength}" required></textarea>
     </div>
 
     <input id="c_submitButton" name="c_submitButton" type="submit" value="${s_submitButtonLabel}" disabled>
