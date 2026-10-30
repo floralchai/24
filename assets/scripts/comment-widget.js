@@ -17,7 +17,7 @@
 */
 
 // The values in this section are REQUIRED for the widget to work! Keep them in quotes!
-const s_stylePath = "../../assets/general_styles/cmtbox.css"
+const s_stylePath = "cmtbox.css"
 const s_formId = "1FAIpQLSeWfvuC_DsO3RNcMqI0YRscqaglKEWHtYi3j6tgTwIDDOlSsQ"
 const s_nameId = "1043589293"
 const s_websiteId = "1171504669"

@@ -62,15 +62,9 @@ textarea, input {
     margin-top: .5rem;
     max-width: 100%;
 }
-textarea {
+textarea, input {
     width: 600px;
     height: 100px;
-    border: 2px solid #c4c4c4;
-    border-radius: 6px;
-}
-.input {
-    width: 600px;
-    height: auto;
     border: 2px solid #c4c4c4;
     border-radius: 6px;
 }
