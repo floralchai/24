@@ -9,7 +9,7 @@
     --color-black: #000000;
 }
 body {
-    background-image: url("/web/20251202095258im_/https://floralchai.neocities.org/assets/chiikawa-clique/chiikawa-gang.png"), url("/web/20251202095258im_/https://floralchai.neocities.org/assets/chiikawa-clique/gradient.png"), url("/web/20251202095258im_/https://floralchai.neocities.org/assets/graphics/sakura-pattern.png");
+    background-image: url("/assets/graphics/sakura-pattern.png");
     background-repeat: no-repeat, repeat-x, repeat;
     background-position: top right;
     background-attachment: scroll;
@@ -19,7 +19,6 @@ body {
 }
 .base {
     font-family: "SourceSerif4", 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    background-image: url("/web/20251202095258im_/https://floralchai.neocities.org/assets/chiikawa-clique/logo.png");
     background-repeat: no-repeat;
     background-position: top left;
     background-origin: content-box;
