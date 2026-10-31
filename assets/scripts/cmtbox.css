@@ -199,27 +199,12 @@ label {
     line-height: 1.75rem;
     word-spacing: 0.1rem;
 }
-  .hidden { 
-    display: none;
-  }
-  .success { 
-    color: green;
-  }
-  .error { 
-    color: darkred; 
-  }
   .required { 
     color: red;
   }
   #pagination button {
     border: 1px solid black;
     margin: 3px;
-  }
-  .success, .error, .required {
-    font-size: 0.8rem;
-    text-align: justify;
-    line-height: 1.75rem;
-    word-spacing: 0.1rem;
   }
   .join-section {
     max-width: 100%;
@@ -424,7 +409,7 @@ button:hover {
 #HCB_comment_box {
   box-sizing: border-box;
   max-width: 500px;
-  font-family: "SourceSerif4", Arial, Helvetica, sans-serif;
+  font-family: "SourceSerif4", Arial, Helvetica, sans-serif !important;
   font-size: 0.8rem;
   color: var(--color-black);
   box-shadow: none !important;
@@ -448,10 +433,10 @@ button:hover {
   outline: none;
 }
 h1, h2, h3 {
-    font-family: "SourceSerif4", "Times New Roman", Times, serif;
+    font-family: "SourceSerif4", "Times New Roman", Times, serif !important;
 }
 #HCB_comment_box #hcb_form textarea, #HCB_comment_box #hcb_form #hcb_form_name {
-    font-family: "SourceSerif4", "Times New Roman", Times, serif;
+    font-family: "SourceSerif4", "Times New Roman", Times, serif !important;
 }
 #HCB_comment_box #hcb_form_name:focus,
 #HCB_comment_box #hcb_form_email:focus,
@@ -524,6 +509,12 @@ h1, h2, h3 {
 #HCB_comment_box .hcb-comment-body,
 #HCB_comment_box .hcb-comment-tb a {
   font-size: 16px;
+  font-family: "SourceSerif4", Arial, Helvetica, sans-serif !important;
+}
+h3 {
+  display: list-item;
+  list-style-image: url("../graphics/star_s_03.gif");
+
 }
 #HCB_comment_box #hcb_form .hcb-door-out {
   display: block;
