@@ -204,26 +204,27 @@ function getComments(clearForm) {
         }
     }
 
-    // Cache-buster so the browser never shows an old copy of the Sheet
-    const url = `https://docs.google.com/spreadsheets/d/${s_sheetId}/gviz/tq?tqx=out:json&_=${Date.now()}`;
-    return getSheet(url).then(result => {
-        // Remove the wrapper Google puts around the JSON
-        const json = JSON.parse(result.substring(result.indexOf('{'), result.lastIndexOf('}') + 1));
+    // Tutorial method: ask Google Sheets (gviz) for only this page's rows, as CSV.
+    // Columns follow the Form question order: A Timestamp, B Name, C Website, D Text, E Page, F Reply
+    const safePath = v_pagePath.replace(/'/g, "''");
+    const query = `SELECT A, B, C, D, F WHERE E = '${safePath}'`;
+    const url = `https://docs.google.com/spreadsheets/d/${s_sheetId}/gviz/tq?tqx=out:csv&tq=${encodeURIComponent(query)}&headers=1&_=${Date.now()}`;
+    return getSheet(url).then(csvText => {
+        const rows = parseCSV(csvText.trim());
+        // First row is the header row: Timestamp, Name, Website, Text, Reply
+        if (!rows.length || rows[0][1] !== 'Name') { throw new Error('Unexpected sheet data'); }
 
-        const pageIdx = json.table.cols.findIndex(col => col.label == 'Page');
         const comments = [];
-
-        for (let r = 0; r < json.table.rows.length; r++) {
-            const row = json.table.rows[r].c;
-            const pageCell = row[pageIdx];
-            const pageVal = pageCell ? pageCell.v : '';
-            if (pageVal != v_pagePath) { continue; }
-
-            const comment = {};
-            for (let c = 0; c < json.table.cols.length; c++) {
-                comment[json.table.cols[c].label] = row[c] ? row[c].v : '';
-            }
-            comment.Timestamp2 = row[0] ? row[0].f : '';
+        for (let r = 1; r < rows.length; r++) {
+            const row = rows[r];
+            const comment = {
+                Timestamp: row[0] || '',
+                Name: row[1] || '',
+                Website: row[2] || '',
+                Text: row[3] || '',
+                Reply: row[4] || ''
+            };
+            comment.Timestamp2 = comment.Timestamp;
             if (comment.Name && comment.Text) { comments.push(comment); }
         }
 
@@ -238,6 +239,37 @@ function getComments(clearForm) {
         c_submitButton.disabled = false;
         return v_commentCount;
     });
+}
+
+// CSV parser that handles quoted fields, commas and line breaks inside comments
+function parseCSV(text) {
+    const rows = [];
+    let row = [], field = '', inQuotes = false;
+    for (let i = 0; i < text.length; i++) {
+        const ch = text[i];
+        if (inQuotes) {
+            if (ch === '"' && text[i + 1] === '"') { field += '"'; i++; }
+            else if (ch === '"') { inQuotes = false; }
+            else { field += ch; }
+        } else if (ch === '"') { inQuotes = true; }
+        else if (ch === ',') { row.push(field); field = ''; }
+        else if (ch === '\n') { row.push(field); rows.push(row); row = []; field = ''; }
+        else if (ch !== '\r') { field += ch; }
+    }
+    row.push(field); rows.push(row);
+    return rows;
+}
+
+// Date/time text from the sheet, e.g. "7/12/2024 23:32:54" -> "7/12/2024 at 11:32:54 PM"
+function formatDate(stringDate) {
+    const parts = String(stringDate).split(' ');
+    if (parts.length < 2) { return stringDate; }
+    const [h, m, sec] = parts[1].split(':');
+    let hours = parseInt(h, 10);
+    const ampm = hours >= 12 ? 'PM' : 'AM';
+    if (hours > 12) { hours -= 12; }
+    if (hours === 0) { hours = 12; }
+    return `${parts[0]} at ${hours}:${m}:${sec} ${ampm}`;
 }
 
 function getSheet(url) {
@@ -347,8 +379,8 @@ function displayComments(comments) {
 function createComment(data) {
     const comment = document.createElement('div');
 
-    const timestamps = convertTimestamp(data.Timestamp);
-    const timestamp = s_longTimestamp ? timestamps[0] : timestamps[1];
+    const fullStamp = String(data.Timestamp || '');
+    const timestamp = s_longTimestamp ? formatDate(fullStamp) : fullStamp.split(' ')[0];
 
     // ID = Name + full timestamp (same scheme the replies use to find their parent)
     comment.id = data.Name + '|--|' + data.Timestamp2;
