@@ -427,6 +427,8 @@ button:hover {
   font-family: "SourceSerif4", Arial, Helvetica, sans-serif;
   font-size: 0.8rem;
   color: var(--color-black);
+  box-shadow: none;
+  background-color: none;
 }
 
 /* Form fields: yellow-tint example adapted to your palette */
@@ -445,7 +447,12 @@ button:hover {
   border: 2px solid #c4c4c4;
   outline: none;
 }
-
+h1, h2, h3 {
+    font-family: "SourceSerif4", "Times New Roman", Times, serif;
+}
+#HCB_comment_box #hcb_form textarea, #HCB_comment_box #hcb_form #hcb_form_name {
+    font-family: "SourceSerif4", "Times New Roman", Times, serif;
+}
 #HCB_comment_box #hcb_form_name:focus,
 #HCB_comment_box #hcb_form_email:focus,
 #HCB_comment_box #hcb_form_content:focus,
@@ -530,6 +537,19 @@ button:hover {
   
   /* 2. Load the new image URL as a background */
   background: url("/assets/graphics/outlink2.png") no-repeat;
+}
+#HCB_comment_box .hcb-icon a {
+  display: block;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  
+  /* 1. Hide the original HTML image by shifting it via padding */
+  width: 300px;             /* Width of your new image */
+  height: 200px;            /* Height of your new image */
+  padding-left: 300px;      /* Equal to the width to push original out */
+  
+  /* 2. Load the new image URL as a background */
+  background: url("../buttons/rss-feed.png") no-repeat;
 
 }
 @media only screen and (max-width: 1300px) {
