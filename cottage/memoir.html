@@ -30,11 +30,9 @@
             <label for="name">Name:</label>
             <input type="text" id="name" name="entry.1043589293" required>
             <label for="email">Email:</label>
-            <input type="email" id="email" name="entry.1302608640" required>
+            <input type="email" id="email" name="entry.1302608640">
             <label for="comment">Comment:</label>
-            <textarea id="comment" name="entry.1065046570" rows="4" cols="50"></textarea>
-            <label for="posturl">Post URL:</label>
-            <input type="text" id="posturl" name="entry.1890574009">
+            <textarea id="comment" name="entry.1065046570" rows="4" cols="50" required></textarea>
             <br>
             <button type="submit">Submit</button>
           </form>
@@ -81,7 +79,7 @@
     // Encode the SQL statement to be used in the URL
     const sqlStatement = encodeURIComponent(`SELECT A, C, D, E, F WHERE B = '${thisPageUrl}'`);
     // Construct the URL for fetching the data
-    const csvUrl = `https://docs.google.com/spreadsheets/d/1hVRP9tYl8f4bsBjJP52hv74DwZ2pYpatxaNMG2rNY_M/gviz/tq?tqx=out:csv&sheet=comments&tq=${sqlStatement}&headers=0`;
+    const csvUrl = `https://docs.google.com/spreadsheets/d/1KIRN9S4OJdLCLOZGTKJqbPwV8SVidExfFcI6jX0F6Ag/gviz/tq?tqx=out:csv&sheet=comments&tq=${sqlStatement}&headers=0`;
     // Fetch the data from the Google Sheets URL
     fetch(csvUrl).then(response => response.text()) // Get the response text (data)
       .then(csvText => {
