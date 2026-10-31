@@ -90,7 +90,7 @@
     --color-black: #000000;
 }
 body {
-    background-image: url("../graphics/background-forln.jpg");
+    background-color: var(--color-white);
     background-repeat: repeat;
     background-size: auto;
     color: var(--color-black);
@@ -611,7 +611,7 @@ h3 {
   text-shadow:-1px -1px 0 #ffffff,  1px -1px 0 #ffffff, -1px  1px 0 #ffffff,  1px  1px 0 #ffffff,-1px  0px 0 #ffffff,  1px  0px 0 #ffffff, 0px -1px 0 #ffffff,  0px  1px 0 #ffffff;
 }
 @media only screen and (max-width: 1300px) {
-    .base {
+    body {
         background-image: url("../graphics/sakura-pattern.png");
         background-repeat: repeat;
         background-size: auto;
@@ -620,10 +620,12 @@ h3 {
     }
 }
 @media only screen and (max-width: 480px) {
-    .base {
+    body {
         background-image: url("../graphics/sakura-pattern.png");
         background-repeat: repeat;
         background-size: auto;
+        max-width: 100%;
+        width: 900px;
     }
     .navi {
         margin-top: calc(110% - 5vh);
