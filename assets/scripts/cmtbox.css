@@ -53,7 +53,19 @@
         #c_rightButton - The right <button>
 */
 
-/* Main */
+@font-face {
+    font-family: "SourceSerif4";
+    src: url("../fonts/SourceSerif4.ttf") format('truetype');
+}
+@font-face {
+    font-family: "Nunito";
+    src: url("../fonts/Nunito.ttf") format('truetype');
+}
+@font-face {
+    font-family: "Inter";
+    src: url("../fonts/Inter.ttf") format('truetype');
+}
+
 * {
  box-sizing: border-box;
 }
@@ -543,6 +555,69 @@ h3 {
   background: url("../buttons/rss-feed.png") no-repeat !important;
 
 }
+
+
+/* the entire html comment box container. applies to everything */
+
+#HCB_comment_box textarea, #HCB_comment_box input.text {
+   border: 2px solid #c4c4c4;
+   font-family: "SourceSerif4", Arial, Helvetica, sans-serif !important;
+}
+
+#HCB_comment_box .hcb-wrapper-half {
+  display:block;
+  width:50%;
+  float:left;
+}
+#HCB_comment_box .hcb-wrapper {
+  clear:both;
+  margin-bottom:0.5em;
+}
+#HCB_comment_box input.text {
+  display:block;
+  width:97%;
+  
+}
+/* the submit button */
+#HCB_comment_box input.submit {
+    margin:0 7px 3px 0;
+    background-color: var(--color-black);
+    border: 2px var(--color-black);
+    font-family: "SourceSerif4", Arial, Helvetica, sans-serif !important;
+    text-decoration:none;
+    font-weight:bold;
+    color: var(--color-white);
+    cursor:pointer;
+    width:auto;
+    overflow:visible;
+    padding:4px 10px 3px 7px; /* IE6 */
+}
+#HCB_comment_box input.submit:hover{
+    background-color: var(--color-black);
+    color: var(--color-white);
+}
+
+#HCB_comment_box span.home-desc {
+  opacity:0.4;
+}
+
+/* the individual comment display containers */
+#HCB_comment_box div.comment {
+  border-top: 2px dotted var(--color-black);
+  margin-bottom:0.5em;
+}
+
+/* the moderator message */
+.hcb-mod  b{
+  color:var(--color-blue);
+}
+
+/* next, prev, ok and x link style */
+.hcb-link {
+  color: gray;
+  text-decoration:underline;
+}
+
 @media only screen and (max-width: 1300px) {
     body {
         background-position: top right;
