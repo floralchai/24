@@ -602,8 +602,9 @@ h3 {
     box-shadow: none;
 }
 #HCB_comment_box #hcb_form textarea, #HCB_comment_box #hcb_form #hcb_form_name {
-    width: 600px;
-    max-width: 100%;
+  width: 100%;       
+  max-width: 700px; 
+  margin: 0 auto;
 }
 @media only screen and (max-width: 1300px) {
     .base {
