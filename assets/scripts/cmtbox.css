@@ -462,7 +462,6 @@ h1, h2, h3 {
   display: inline-block;
   margin: 0 4px 0 0;
   font-weight: bold;
-  color: var(--color-black);
 }
 
 /* Submit button, adapted from the guide */
@@ -598,16 +597,17 @@ h3 {
   margin: 0 auto;
 }
 #HCB_comment_box .author-name {
-  visibility: hidden;
   position: relative;
+  color: var(--color-pink);
+  text-shadow:-1px -1px 0 #ffffff,  1px -1px 0 #ffffff, -1px  1px 0 #ffffff,  1px  1px 0 #ffffff,-1px  0px 0 #ffffff,  1px  0px 0 #ffffff, 0px -1px 0 #ffffff,  0px  1px 0 #ffffff;
 }
-#HCB_comment_box .author-name::after {
+#HCB_comment_box .author hcb-mod::after {
   content: "❤︎";
   visibility: visible;
   position: absolute;
   top: 0;
   left: 0;
-  color: var(--color-pink);
+  color: var(--color-green);
   text-shadow:-1px -1px 0 #ffffff,  1px -1px 0 #ffffff, -1px  1px 0 #ffffff,  1px  1px 0 #ffffff,-1px  0px 0 #ffffff,  1px  0px 0 #ffffff, 0px -1px 0 #ffffff,  0px  1px 0 #ffffff;
 }
 @media only screen and (max-width: 1300px) {
