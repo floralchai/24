@@ -96,13 +96,14 @@ body {
     background-size: auto;
     color: var(--color-black);
     scroll-behavior: smooth;
+    background-attachment: fixed; 
+
 }
 .base {
     font-family: "SourceSerif4", 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    background-repeat: no-repeat;
     background-position: top left;
     background-origin: content-box;
-    background-size: 80%;
+    background-attachment: fixed; 
 }
 .navi {
     font-family: "Inter", Verdana, Geneva, Tahoma, sans-serif;
@@ -602,8 +603,13 @@ h3 {
   color: var(--color-pink);
   text-shadow:-1px -1px 0 #ffffff,  1px -1px 0 #ffffff, -1px  1px 0 #ffffff,  1px  1px 0 #ffffff,-1px  0px 0 #ffffff,  1px  0px 0 #ffffff, 0px -1px 0 #ffffff,  0px  1px 0 #ffffff;
 }
+#HCB_comment_box .author hcb-mod {
+  visibility: hidden;
+  position: relative;
+
+}
 #HCB_comment_box .author hcb-mod::after {
-  content: "❤︎";
+  content: "Flora ❤︎";
   visibility: visible;
   position: absolute;
   top: 0;
@@ -612,21 +618,23 @@ h3 {
   text-shadow:-1px -1px 0 #ffffff,  1px -1px 0 #ffffff, -1px  1px 0 #ffffff,  1px  1px 0 #ffffff,-1px  0px 0 #ffffff,  1px  0px 0 #ffffff, 0px -1px 0 #ffffff,  0px  1px 0 #ffffff;
 }
 @media only screen and (max-width: 1300px) {
-    body {
+    body, .base {
         background-image: url("../graphics/sakura-pattern.png");
         background-repeat: repeat;
         background-size: auto;
         max-width: 100%;
         width: 900px;
+        background-attachment: fixed; 
     }
 }
 @media only screen and (max-width: 480px) {
-    body {
+    body, .base {
         background-image: url("../graphics/sakura-pattern.png");
         background-repeat: repeat;
         background-size: auto;
         max-width: 100%;
         width: 900px;
+        background-attachment: fixed; 
     }
     .navi {
         margin-top: calc(110% - 5vh);
