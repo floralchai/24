@@ -186,8 +186,8 @@ footer {
     border-left: solid 5px var(--color-black);
     background-color: snow;
     padding-left: 1rem;
-    width: 800px;
-    max-width: 100%;
+    width: 100%;
+    max-width: 800px;
 }
 button, .vote {
     color: var(--color-white);
@@ -596,6 +596,19 @@ h3 {
   width: 100%;       
   max-width: 700px; 
   margin: 0 auto;
+}
+#HCB_comment_box .author-name {
+  visibility: hidden;
+  position: relative;
+}
+#HCB_comment_box .author-name::after {
+  content: "Flora ❤︎";
+  visibility: visible;
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: var(--color-pink);
+  text-shadow: 2px var(--color-white);
 }
 @media only screen and (max-width: 1300px) {
     .base {
