@@ -517,8 +517,18 @@ h3 {
   content: url("../graphics/outlink2.png") !important;
 }
 #HCB_comment_box .hcb-icon a img[src$="feed.svg"] {
-  width: auto !important;
   content: url("../buttons/rss-feed.png") !important;
+
+  width: auto;
+  height: auto;
+  
+  box-sizing: border-box;
+  padding-left: auto; /* Must match the width of your image */
+  
+  background-image: url("../buttons/rss-feed.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+
 }
 
 #HCB_comment_box textarea, #HCB_comment_box input.text {
@@ -542,7 +552,7 @@ h3 {
 }
 /* the submit button */
 #HCB_comment_box input.submit, #HCB_comment_box #hcb_form .btn-secondary, #HCB_comment_box #HCB_comment_form_box .btn-secondary, #HCB_comment_box #hcb_form .btn, #HCB_comment_box #HCB_comment_form_box .btn {
-    margin:0 7px 4px 0;
+    margin:0 6px 4px 0;
     background-color: var(--color-black);
     font-family: "SourceSerif4", Arial, Helvetica, sans-serif !important;
     text-decoration:none;
