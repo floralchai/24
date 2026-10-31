@@ -26,18 +26,36 @@
           <li>When sent, I will read it then reply. If not replied, that is because you did not filled link section</li>
         </ol>
         <section class="box paragraph">
-          <form action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSeWfvuC_DsO3RNcMqI0YRscqaglKEWHtYi3j6tgTwIDDOlSsQ/formResponse" method="POST">
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="entry.1043589293" required>
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="entry.1302608640">
-            <label for="comment">Comment:</label>
-            <textarea id="comment" name="entry.1065046570" rows="4" cols="50" required></textarea>
-            <br>
-            <button type="submit">Submit</button>
-          </form>
-          <div id="comments"></div>
-        </section>
+<section class="comments" id="comments">
+  <h2>Comments</h2>
+
+  <div id="comment-list" class="comment-list" aria-live="polite">
+    <p class="muted">Loading comments…</p>
+  </div>
+
+  <form id="comment-form" class="comment-form">
+    <h3>Leave a comment</h3>
+
+    <label>
+      Name
+      <input type="text" id="comment-name" required maxlength="80">
+    </label>
+
+    <label>
+      Email
+      <input type="email" id="comment-email" required maxlength="120">
+    </label>
+
+    <label>
+      Comment
+      <textarea id="comment-text" rows="4" required maxlength="2000"></textarea>
+    </label>
+
+    <button type="submit">Post comment</button>
+    <p id="comment-status" class="muted" role="status"></p>
+  </form>
+</section>
+</section>
         <p class="paragraph"> Let me know in <a class="link">this page</a> if you've any suggestions or inquiries, <span class="purple">this is optional</span>
         </p>
       </section>
@@ -48,63 +66,5 @@
       </footer>
     </main>
   </body>
-  <script>
-    // Function to format the date and time from the data
-    function formatDate(stringDate) {
-      // Split the string into date and time parts
-      const dateTimeParts = stringDate.split(' ');
-      const datePart = dateTimeParts[0]; // Date part like "7/12/2024"
-      let timePart = dateTimeParts[1]; // Time part like "23:32:54"
-      // Parse hours, minutes, and seconds from the time part
-      const [hours, minutes, seconds] = timePart.split(':');
-      // Convert hours to 12-hour format and determine AM/PM
-      let ampm = 'AM';
-      let formattedHours = parseInt(hours, 10);
-      if (formattedHours >= 12) {
-        ampm = 'PM';
-        if (formattedHours > 12) {
-          formattedHours -= 12;
-        }
-      }
-      if (formattedHours === 0) {
-        formattedHours = 12; // 12 AM case
-      }
-      // Format time in HH:mm:ss AM/PM format
-      timePart = `${formattedHours}:${minutes}:${seconds} ${ampm}`;
-      // Return the formatted date and time
-      return `${datePart} at ${timePart}`;
-    }
-    // Get the current page URL
-    const thisPageUrl = window.location.href;
-    // Encode the SQL statement to be used in the URL
-    const sqlStatement = encodeURIComponent(`SELECT A, C, D, E, F WHERE B = '${thisPageUrl}'`);
-    // Construct the URL for fetching the data
-    const csvUrl = `https://docs.google.com/spreadsheets/d/1KIRN9S4OJdLCLOZGTKJqbPwV8SVidExfFcI6jX0F6Ag/gviz/tq?tqx=out:csv&sheet=comments&tq=${sqlStatement}&headers=0`;
-    // Fetch the data from the Google Sheets URL
-    fetch(csvUrl).then(response => response.text()) // Get the response text (data)
-      .then(csvText => {
-        // Split the data into rows and then into individual cells
-        const rows = csvText.trim().split('\n').map(row => row.split(','));
-        // Get the container element for the comments
-        const commentsContainer = document.getElementById('comments');
-        // Loop through each row of the data
-        rows.forEach(row => {
-          const date = formatDate(row[0]); // Format the date and time
-          const name = row[1]; // Get the name
-          const comment = row[2]; // Get the comment
-          const email = row[4]; // Get the email
-          // Create a new div element for the comment
-          const commentDiv = document.createElement('div');
-          // Set the inner HTML of the div element
-          commentDiv.innerHTML = `
-<strong>
-<a href="mailto:${email}">${name}</a>
-</strong>
-<em>${date}</em>: 
-<p>${comment}</p>`;
-          // Append the div element to the comments container
-          commentsContainer.appendChild(commentDiv);
-        });
-      }).catch(error => console.error('Error fetching data:', error)); // Handle any errors
-  </script>
+<script src="comments.js"></script>
 </html>
