@@ -90,7 +90,7 @@
     --color-black: #000000;
 }
 body {
-    background-image: url("../graphics/sakura-pattern.png");
+    background-image: url("../graphics/background-forln.jpg");
     background-repeat: repeat;
     background-size: auto;
     color: var(--color-black);
