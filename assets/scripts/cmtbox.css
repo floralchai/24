@@ -427,8 +427,8 @@ button:hover {
   font-family: "SourceSerif4", Arial, Helvetica, sans-serif;
   font-size: 0.8rem;
   color: var(--color-black);
-  box-shadow: none;
-  background-color: none;
+  box-shadow: none !important;
+  background-color: none !important;
 }
 
 /* Form fields: yellow-tint example adapted to your palette */
@@ -536,7 +536,7 @@ h1, h2, h3 {
   padding-left: 300px;      /* Equal to the width to push original out */
   
   /* 2. Load the new image URL as a background */
-  background: url("/assets/graphics/outlink2.png") no-repeat;
+  background: url("/assets/graphics/outlink2.png") no-repeat !important;
 }
 #HCB_comment_box .hcb-icon a {
   display: block;
@@ -549,7 +549,7 @@ h1, h2, h3 {
   padding-left: 300px;      /* Equal to the width to push original out */
   
   /* 2. Load the new image URL as a background */
-  background: url("../buttons/rss-feed.png") no-repeat;
+  background: url("../buttons/rss-feed.png") no-repeat !important;
 
 }
 @media only screen and (max-width: 1300px) {
