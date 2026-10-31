@@ -91,6 +91,7 @@
 }
 body {
     background-color: var(--color-white);
+    background-image: url("../graphics/sakura-pattern.png");
     background-repeat: repeat;
     background-size: auto;
     color: var(--color-black);
