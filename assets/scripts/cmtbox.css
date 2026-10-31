@@ -207,9 +207,6 @@ label {
     line-height: 1.75rem;
     word-spacing: 0.1rem;
 }
-  .required { 
-    color: red;
-  }
   #pagination button {
     border: 1px solid black;
     margin: 3px;
@@ -401,15 +398,6 @@ a {
 .c-label {
     display: block;
 }
-button {
-    box-shadow: none;
-    border: none;
-    border-radius: 0;
-}
-button:hover {
-    scale: none;
-}
-
 /* =========================================
    HTMLCommentBox theme matched to cmtbox.css
    ========================================= */
@@ -486,7 +474,7 @@ h1, h2, h3 {
   font-family: "SourceSerif4", "Times New Roman", Times, serif;
   color: var(--color-white, #fff);
   background-color: var(--color-black, #000);
-  border: none;
+  border: 2px dotted var(--color-black, #000);
   border-radius: 0;
   cursor: pointer;
 }
@@ -528,7 +516,8 @@ h3 {
   width: 16px !important;
   content: url("../graphics/outlink2.png") !important;
 }
-#HCB_comment_box .hcb-icon a img[src*="https://www.htmlcommentbox.com/static/images/feed.svg"] {
+#HCB_comment_box .hcb-icon a img[src$="feed.svg"] {
+  width: auto !important;
   content: url("../buttons/rss-feed.png") !important;
 }
 
