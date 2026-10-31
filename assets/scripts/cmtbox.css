@@ -529,11 +529,9 @@ h3 {
 
 }
 #HCB_comment_box #hcb_form .hcb-door-out {
-  display: block;
-  content: url("/assets/graphics/outlink2.png") !important;
+  content: url("../graphics/outlink2.png") !important;
 }
 #HCB_comment_box .hcb-icon a {
-  display: block;
   background: url("../buttons/rss-feed.png") !important;
 }
 
@@ -553,7 +551,7 @@ h3 {
 }
 #HCB_comment_box input.text {
   display:block;
-  width:97%;
+  width:95%;
   
 }
 /* the submit button */
