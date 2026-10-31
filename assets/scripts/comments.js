@@ -75,20 +75,23 @@ async function loadComments() {
 }
 
 form.addEventListener("submit", async event => {
-  event.preventDefault();
+  event.preventDefault(); // This stops the redirect to Google Forms
 
   const name = document.getElementById("comment-name").value.trim();
   const email = document.getElementById("comment-email").value.trim();
   const comment = document.getElementById("comment-text").value.trim();
 
-  if (!name || !email || !comment) return;
-
-  statusEl.textContent = "Posting…";
+  if (!name || !email || !comment) {
+    statusEl.textContent = "Please fill in all fields.";
+    return;
+  }
 
   const data = new FormData();
   data.append(CONFIG.nameField, name);
   data.append(CONFIG.emailField, email);
   data.append(CONFIG.commentField, comment);
+
+  statusEl.textContent = "Posting…";
 
   try {
     await fetch(CONFIG.formUrl, {
