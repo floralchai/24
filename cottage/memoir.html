@@ -56,6 +56,15 @@
         <br> This is a nonprofit website | Guestbook © to <span class="pink">Flora</span>
       </footer>
     </main>
-  </body>
+<script>
+  document.querySelectorAll('img').forEach(img => {
+  // Check if the alt attribute contains your keyword
+  if (img.alt.includes('rss')) {
+    // Change the src to your new image URL
+    img.src = '../assets/buttons/rss-feed.png';
+  }
+});
+</script>
   <script src="/assets/scripts/comments.js"></script>
+</body>
 </html>
