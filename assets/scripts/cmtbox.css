@@ -54,6 +54,10 @@
 */
 
 /* Main */
+* {
+ box-sizing: border-box;
+}
+
 ::-webkit-scrollbar {
     width: 12px;
     height: 12px;
@@ -413,6 +417,110 @@ button:hover {
     scale: none;
 }
 
+/* =========================================
+   HTMLCommentBox theme matched to cmtbox.css
+   ========================================= */
+
+#HCB_comment_box {
+  box-sizing: border-box;
+  max-width: 500px;
+  padding: 25px;
+  font-family: "SourceSerif4", Arial, Helvetica, sans-serif;
+  font-size: 0.8rem;
+  color: var(--color-black);
+  background-color: #fffefc;
+  box-shadow: 0 0 1px #777;
+}
+
+/* Form fields: yellow-tint example adapted to your palette */
+#HCB_comment_box #hcb_form_content,
+#HCB_comment_box #hcb_form_email,
+#HCB_comment_box #hcb_form_name,
+#HCB_comment_box #hcb_form_website {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  margin-top: 0.5rem;
+  padding: 0.5em;
+  font: normal 0.65rem Inter, sans-serif;
+  color: #777;
+  background-color: #fffefc;
+  border: 2px solid #c4c4c4;
+  outline: none;
+}
+
+#HCB_comment_box #hcb_form_name:focus,
+#HCB_comment_box #hcb_form_email:focus,
+#HCB_comment_box #hcb_form_content:focus,
+#HCB_comment_box #hcb_form_website:focus {
+  border-color: var(--color-brown, #7a4b2a);
+}
+
+/* Larger comment textarea, from the guide */
+#HCB_comment_box #hcb_form_content {
+  height: 150px;
+  resize: vertical;
+}
+
+/* Submitted comment text */
+#HCB_comment_box blockquote,
+#HCB_comment_box .hcb-comment-body {
+  margin: 0;
+  padding: 10px 0 0;
+  color: var(--color-black);
+  font-size: 0.75rem;
+  text-align: justify;
+}
+
+/* Commenter name */
+#HCB_comment_box .author-name {
+  display: inline-block;
+  margin: 0 10px 0 0;
+  font-weight: bold;
+  color: var(--color-black);
+}
+
+/* Submit button, adapted from the guide */
+#HCB_comment_box #hcb_submit,
+#HCB_comment_box .submit {
+  display: block;
+  margin-top: 10px;
+  padding: 5px;
+  font-family: "SourceSerif4", "Times New Roman", Times, serif;
+  color: var(--color-white, #fff);
+  background-color: var(--color-black, #000);
+  border: none;
+  border-radius: 0;
+  cursor: pointer;
+}
+
+#HCB_comment_box #hcb_submit:hover,
+#HCB_comment_box .submit:hover {
+  color: var(--color-black, #000);
+  background-color: var(--color-white, #fff);
+  border: 2px dotted var(--color-black, #000);
+}
+
+/* Watermark / placeholder text */
+#HCB_comment_box .text-blur {
+  color: #777;
+}
+
+#HCB_comment_box .text-focus {
+  color: var(--color-black);
+}
+
+/* Global text size, from the guide */
+#HCB_comment_box #hcb_form_content,
+#HCB_comment_box #hcb_form_email,
+#HCB_comment_box #hcb_form_name,
+#HCB_comment_box #hcb_form_website,
+#HCB_comment_box #hcb_submit,
+#HCB_comment_box .author-name,
+#HCB_comment_box .hcb-comment-body,
+#HCB_comment_box .hcb-comment-tb a {
+  font-size: 16px;
+}
 
 @media only screen and (max-width: 1300px) {
     body {
