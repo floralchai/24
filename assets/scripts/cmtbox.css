@@ -528,8 +528,8 @@ h3 {
   width: 16px !important;
   content: url("../graphics/outlink2.png") !important;
 }
-#HCB_comment_box .hcb-icon a img {
-  background: url("../buttons/rss-feed.png") !important;
+#HCB_comment_box .hcb-icon a img[src*="https://www.htmlcommentbox.com/static/images/feed.svg"] {
+  content: url("../buttons/rss-feed.png") !important;
 }
 
 #HCB_comment_box textarea, #HCB_comment_box input.text {
