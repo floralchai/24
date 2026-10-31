@@ -90,7 +90,7 @@ document.getElementsByTagName('head')[0].appendChild(c_cssLink);
 // HTML
 const v_mainHtml = `
     <div id="c_inputDiv">
-        <form id="c_form" method="post" target="c_hiddenIframe" action="https://docs.google.com/forms/d/e/${s_formId}/formResponse"></form>
+        <form id="c_form" method="post" action="https://docs.google.com/forms/d/e/${s_formId}/formResponse"></form>
     </div>
     <div id="c_container">${s_loadingText}</div>
 `;
@@ -158,26 +158,21 @@ c_replyInput.type = 'text'; c_replyInput.style.display = 'none';
 c_replyInput.id = 'entry.' + s_replyId; c_replyInput.name = c_replyInput.id;
 c_form.appendChild(c_replyInput);
 
-// Hidden iframe that catches Google Forms' default "response recorded" page
-let v_submitted = false;
-const c_hiddenIframe = document.createElement('iframe');
-c_hiddenIframe.id = 'c_hiddenIframe'; c_hiddenIframe.name = 'c_hiddenIframe';
-c_hiddenIframe.style.display = 'none';
-c_hiddenIframe.addEventListener('load', function () { if (v_submitted) { fixFrame(); } });
-c_form.appendChild(c_hiddenIframe);
-
-if (s_commentsOpen) {
-    c_form.addEventListener('submit', function () {
-        c_submitButton.disabled = true;
-        v_submitted = true;
-    });
-}
+// Submit to Google Forms with fetch (no iframe, so no framing/CSP warning).
+// no-cors means the response is opaque, but the Form still records the entry.
+c_form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (!s_commentsOpen) { return; }
+    c_submitButton.disabled = true;
+    const body = new URLSearchParams(new FormData(c_form));
+    fetch(c_form.action, { method: 'POST', mode: 'no-cors', body: body })
+        .then(function () { fixFrame(); })
+        .catch(function () { c_submitButton.disabled = false; });
+});
 
 // After Google Forms accepts the submission, reload the comments
 let v_commentCount = 0; // how many comments this page had at the last load
 function fixFrame() {
-    v_submitted = false;
-    c_hiddenIframe.srcdoc = '';
     const before = v_commentCount;
     let first = true;
     // The Sheet can lag a few seconds behind the Form, so retry until the new comment shows up
