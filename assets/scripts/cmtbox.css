@@ -460,7 +460,7 @@ h1, h2, h3 {
 /* Commenter name */
 #HCB_comment_box .author-name {
   display: inline-block;
-  margin: 0 10px 0 0;
+  margin: 0 4px 0 0;
   font-weight: bold;
   color: var(--color-black);
 }
@@ -602,13 +602,13 @@ h3 {
   position: relative;
 }
 #HCB_comment_box .author-name::after {
-  content: "Flora ❤︎";
+  content: "❤︎";
   visibility: visible;
   position: absolute;
   top: 0;
   left: 0;
   color: var(--color-pink);
-  text-shadow: 2px var(--color-white);
+  text-shadow:-1px -1px 0 #ffffff,  1px -1px 0 #ffffff, -1px  1px 0 #ffffff,  1px  1px 0 #ffffff,-1px  0px 0 #ffffff,  1px  0px 0 #ffffff, 0px -1px 0 #ffffff,  0px  1px 0 #ffffff;
 }
 @media only screen and (max-width: 1300px) {
     .base {
