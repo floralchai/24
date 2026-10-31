@@ -61,10 +61,6 @@
     font-family: "Nunito";
     src: url("../fonts/Nunito.ttf") format('truetype');
 }
-@font-face {
-    font-family: "Inter";
-    src: url("../fonts/Inter.ttf") format('truetype');
-}
 
 * {
  box-sizing: border-box;
@@ -589,7 +585,15 @@ h3 {
 .hcb-mod  b{
   color:var(--color-blue);
 }
-
+#HCB_comment_box #hcb_form .home-desc a, #HCB_comment_box .home-desc a {
+    color: #aeaeae;
+    text-decoration: none;
+}
+#HCB_comment_box #hcb_form .home-desc a, #HCB_comment_box .home-desc a:hover {
+    background-color: aliceblue;
+    text-decoration: underline solid 3px skyblue;
+    color: #aeaeae;
+}
 /* next, prev, ok and x link style */
 .hcb-link {
   color: gray;
