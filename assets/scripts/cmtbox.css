@@ -404,7 +404,7 @@ a {
 
 #HCB_comment_box {
   box-sizing: border-box;
-  max-width: 500px;
+  max-width: 800px;
   font-family: "SourceSerif4", Arial, Helvetica, sans-serif !important;
   font-size: 0.8rem;
   color: var(--color-black);
@@ -516,19 +516,10 @@ h3 {
   width: 16px !important;
   content: url("../graphics/outlink2.png") !important;
 }
-#HCB_comment_box .hcb-icon a img[src$="feed.svg"] {
+#HCB_comment_box .hcb-icon a img[alt="rss"] {
+  width: auto !important;
   content: url("../buttons/rss-feed.png") !important;
-
-  width: auto;
-  height: auto;
-  
   box-sizing: border-box;
-  padding-left: auto; /* Must match the width of your image */
-  
-  background-image: url("../buttons/rss-feed.png");
-  background-size: cover;
-  background-repeat: no-repeat;
-
 }
 
 #HCB_comment_box textarea, #HCB_comment_box input.text {
