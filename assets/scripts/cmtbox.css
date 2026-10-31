@@ -529,9 +529,11 @@ h3 {
 
 }
 #HCB_comment_box #hcb_form .hcb-door-out {
+  width: auto !important;
   content: url("../graphics/outlink2.png") !important;
 }
-#HCB_comment_box .hcb-icon a {
+#HCB_comment_box .hcb-icon a img {
+  width: auto !important;  
   background: url("../buttons/rss-feed.png") !important;
 }
 
@@ -593,7 +595,9 @@ h3 {
   color: gray;
   text-decoration:underline;
 }
-
+#HCB_comment_box #hcb_form_content:focus, #HCB_comment_box #hcb_form_email:focus, #HCB_comment_box #hcb_form_name:focus, #HCB_comment_box #hcb_form_website:focus {
+    box-shadow: none;
+}
 @media only screen and (max-width: 1300px) {
     body {
         background-position: top right;
