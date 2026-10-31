@@ -588,7 +588,7 @@ h3 {
     color: #aeaeae;
     text-decoration: none;
 }
-#HCB_comment_box #hcb_form .home-desc a, #HCB_comment_box .home-desc a:hover {
+#HCB_comment_box #hcb_form .home-desc a:hover, #HCB_comment_box .home-desc a:hover {
     background-color: aliceblue;
     text-decoration: underline solid 3px skyblue;
     color: #aeaeae;
@@ -606,12 +606,6 @@ h3 {
     max-width: 100%;
 }
 @media only screen and (max-width: 1300px) {
-    body {
-        background-position: top right;
-        background-image: url("../graphics/sakura-pattern.png");
-        background-repeat: repeat;
-        background-size: auto;
-    }
     .base {
         background-image: url("../graphics/sakura-pattern.png");
         background-repeat: repeat;
@@ -621,12 +615,6 @@ h3 {
     }
 }
 @media only screen and (max-width: 480px) {
-        body {
-        background-position: top right;
-        background-image: url("../graphics/sakura-pattern.png");
-        background-repeat: repeat;
-        background-size: auto;
-    }
     .base {
         background-image: url("../graphics/sakura-pattern.png");
         background-repeat: repeat;
