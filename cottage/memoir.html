@@ -1,84 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../assets/general_styles/root.css">
     <link rel="stylesheet" href="../assets/scripts/cmtbox.css">
     <title>Memoir</title>
-</head>
-<body>
- 
+  </head>
+  <body>
     <div class="logo"></div>
-
     <!-----------MAIN CONTENT----------->
     <main class="base">
-        <a class="blue btn-nav back" href="../index.html">⟵ back to cottage</a>
-        <section>
-            <h1><img class="star" src="../assets/graphics/star_s_19.gif"> Welcome!
-            </h1>
-            <p class="paragraph">A form for I, myself, and other people to send secret messages, mainly to the owner or webmaster, which is me, Flora. If you want you are welcomed to talk here politely. Respond with kindsness and is how I appreciated you.</p>
-            <h2><img class="star" src="../assets/graphics/star_s_04.gif"> How to join?</h2>
-            <ol class="paragraph">
-                <li>Read up the <a class="blue">rules</a>, it's important to follow</li>
-                <li>Confide with love and care, express yourself freely</li>
-                <li>When sent, I will read it then reply. If not replied, that is because you did not filled link section</li>
-            </ol>
-            <section class="box paragraph">
-<form action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSeWfvuC_DsO3RNcMqI0YRscqaglKEWHtYi3j6tgTwIDDOlSsQ/formResponse" method="POST">
-  <label for="name">Name:</label><br>
-  <input type="text" id="name" name="entry.1043589293" required><br><br>
-  
-  <label for="email">Email:</label><br>
-  <input type="email" id="email" name="entry.1302608640" required><br><br>
-  
-  <label for="comment">Comment:</label><br>
-  <textarea id="comment" name="entry.1065046570" rows="4" cols="50"></textarea><br><br>
-  
-  <label for="posturl">Post URL:</label><br>
-  <input type="text" id="posturl" name="entry.1890574009"><br><br>
-  
-  <button type="submit">Submit</button>
-</form>
-</section>
-            <p class="paragraph">
-                Let me know in <a class="link">this page</a> if you've any suggestions or inquiries, <span class="purple">this is optional</span>
-            </p>
-        </section>
-        <footer>
-            <hr class="dashed">
-            <a class="pink" href="../index.html">Sakura</a> ❤︎ 2025, the contents and design is by <a class="link" href="../index.html">Flora</a>. Part of <a class="link" href="../index.html">Floralchai</a>
+      <a class="blue btn-nav back" href="../index.html">⟵ back to cottage</a>
+      <section>
+        <h1>
+          <img class="star" src="../assets/graphics/star_s_19.gif"> Welcome!
+        </h1>
+        <p class="paragraph">A form for I, myself, and other people to send secret messages, mainly to the owner or webmaster, which is me, Flora. If you want you are welcomed to talk here politely. Respond with kindsness and is how I appreciated you.</p>
+        <h2>
+          <img class="star" src="../assets/graphics/star_s_04.gif"> How to join?
+        </h2>
+        <ol class="paragraph">
+          <li>Read up the <a class="blue">rules</a>, it's important to follow </li>
+          <li>Confide with love and care, express yourself freely</li>
+          <li>When sent, I will read it then reply. If not replied, that is because you did not filled link section</li>
+        </ol>
+        <section class="box paragraph">
+          <form action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSeWfvuC_DsO3RNcMqI0YRscqaglKEWHtYi3j6tgTwIDDOlSsQ/formResponse" method="POST">
+            <label for="name">Name:</label>
             <br>
-            This is a nonprofit website | Guestbook © to <span class="pink">Flora</span>            
-        </footer>
+            <input type="text" id="name" name="entry.1043589293" required>
+            <br>
+            <br>
+            <label for="email">Email:</label>
+            <br>
+            <input type="email" id="email" name="entry.1302608640" required>
+            <br>
+            <br>
+            <label for="comment">Comment:</label>
+            <br>
+            <textarea id="comment" name="entry.1065046570" rows="4" cols="50"></textarea>
+            <br>
+            <br>
+            <label for="posturl">Post URL:</label>
+            <br>
+            <input type="text" id="posturl" name="entry.1890574009">
+            <br>
+            <br>
+            <button type="submit">Submit</button>
+          </form>
+          <div id="comments"></div>
+        </section>
+        <p class="paragraph"> Let me know in <a class="link">this page</a> if you've any suggestions or inquiries, <span class="purple">this is optional</span>
+        </p>
+      </section>
+      <footer>
+        <hr class="dashed">
+        <a class="pink" href="../index.html">Sakura</a> ❤︎ 2025, the contents and design is by <a class="link" href="../index.html">Flora</a>. Part of <a class="link" href="../index.html">Floralchai</a>
+        <br> This is a nonprofit website | Guestbook © to <span class="pink">Flora</span>
+      </footer>
     </main>
-</body>
-    <div id="comments"></div>
-<script>
+  </body>
+  <script>
     // Function to format the date and time from the data
     function formatDate(stringDate) {
-        // Split the string into date and time parts
-        const dateTimeParts = stringDate.split(' ');
-        const datePart = dateTimeParts[0]; // Date part like "7/12/2024"
-        let timePart = dateTimeParts[1]; // Time part like "23:32:54"
-        // Parse hours, minutes, and seconds from the time part
-        const [hours, minutes, seconds] = timePart.split(':');
-        // Convert hours to 12-hour format and determine AM/PM
-        let ampm = 'AM';
-        let formattedHours = parseInt(hours, 10);
-        if (formattedHours >= 12) {
-            ampm = 'PM';
-            if (formattedHours > 12) {
-                formattedHours -= 12;
-            }
+      // Split the string into date and time parts
+      const dateTimeParts = stringDate.split(' ');
+      const datePart = dateTimeParts[0]; // Date part like "7/12/2024"
+      let timePart = dateTimeParts[1]; // Time part like "23:32:54"
+      // Parse hours, minutes, and seconds from the time part
+      const [hours, minutes, seconds] = timePart.split(':');
+      // Convert hours to 12-hour format and determine AM/PM
+      let ampm = 'AM';
+      let formattedHours = parseInt(hours, 10);
+      if (formattedHours >= 12) {
+        ampm = 'PM';
+        if (formattedHours > 12) {
+          formattedHours -= 12;
         }
-        if (formattedHours === 0) {
-            formattedHours = 12; // 12 AM case
-        }
-        // Format time in HH:mm:ss AM/PM format
-        timePart = `${formattedHours}:${minutes}:${seconds} ${ampm}`;
-        // Return the formatted date and time
-        return `${datePart} at ${timePart}`;
+      }
+      if (formattedHours === 0) {
+        formattedHours = 12; // 12 AM case
+      }
+      // Format time in HH:mm:ss AM/PM format
+      timePart = `${formattedHours}:${minutes}:${seconds} ${ampm}`;
+      // Return the formatted date and time
+      return `${datePart} at ${timePart}`;
     }
     // Get the current page URL
     const thisPageUrl = window.location.href;
@@ -87,27 +94,30 @@
     // Construct the URL for fetching the data
     const csvUrl = `https://docs.google.com/spreadsheets/d/1hVRP9tYl8f4bsBjJP52hv74DwZ2pYpatxaNMG2rNY_M/gviz/tq?tqx=out:csv&sheet=comments&tq=${sqlStatement}&headers=0`;
     // Fetch the data from the Google Sheets URL
-    fetch(csvUrl)
-        .then(response => response.text()) // Get the response text (data)
-        .then(csvText => {
-            // Split the data into rows and then into individual cells
-            const rows = csvText.trim().split('\n').map(row => row.split(','));
-            // Get the container element for the comments
-            const commentsContainer = document.getElementById('comments');
-            // Loop through each row of the data
-            rows.forEach(row => {
-                const date = formatDate(row[0]); // Format the date and time
-                const name = row[1]; // Get the name
-                const comment = row[2]; // Get the comment
-                const email = row[4]; // Get the email
-                // Create a new div element for the comment
-                const commentDiv = document.createElement('div');
-                // Set the inner HTML of the div element
-                commentDiv.innerHTML = `<strong><a href="mailto:${email}">${name}</a></strong> <em>${date}</em>: <p>${comment}</p>`;
-                // Append the div element to the comments container
-                commentsContainer.appendChild(commentDiv);
-            });
-        })
-        .catch(error => console.error('Error fetching data:', error)); // Handle any errors
-</script>
+    fetch(csvUrl).then(response => response.text()) // Get the response text (data)
+      .then(csvText => {
+        // Split the data into rows and then into individual cells
+        const rows = csvText.trim().split('\n').map(row => row.split(','));
+        // Get the container element for the comments
+        const commentsContainer = document.getElementById('comments');
+        // Loop through each row of the data
+        rows.forEach(row => {
+          const date = formatDate(row[0]); // Format the date and time
+          const name = row[1]; // Get the name
+          const comment = row[2]; // Get the comment
+          const email = row[4]; // Get the email
+          // Create a new div element for the comment
+          const commentDiv = document.createElement('div');
+          // Set the inner HTML of the div element
+          commentDiv.innerHTML = `
+<strong>
+<a href="mailto:${email}">${name}</a>
+</strong>
+<em>${date}</em>: 
+<p>${comment}</p>`;
+          // Append the div element to the comments container
+          commentsContainer.appendChild(commentDiv);
+        });
+      }).catch(error => console.error('Error fetching data:', error)); // Handle any errors
+  </script>
 </html>
