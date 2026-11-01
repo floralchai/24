@@ -87,8 +87,8 @@ figcaption {
 }
 hr.divider {
   border: none;
-  height: 35px; 
-  background-image: url('../graphics/divider.png'); 
+  height: 31px; 
+  background-image: url('../graphics/r17-lace-line.gif'); 
   background-repeat: no-repeat; 
   background-position: center;
   background-size: contain;
