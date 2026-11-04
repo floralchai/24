@@ -41,6 +41,7 @@ body {
     background-position: 0 0, 7.5px 7.5px, center;
     background-size: 15px 15px, 15px 15px, auto;
     position: relative;
+    overflow-x: hidden;
 }
 
 body::before {
