@@ -3,9 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="./assets/graphics/sunflower.png">
+    <link rel="stylesheet" href="./assets/general_styles/scrollbar.css">
     <link rel="stylesheet" href="./assets/general_styles/root.css">
     <title>Badges</title>
 <style>
+    body::before {
+    background: url("/assets/graphics/charm-dreamcatchernest.png") no-repeat center/contain;
+    background-position: 0 0, 7.5px 7.5px, center;
+    }
     body {
         background: radial-gradient(white 1px, transparent 1px), gold;
         background-size: 15px 15px;
@@ -27,18 +33,24 @@
         <hr class="line">
     <!-----------HEADER----------->
     <header>
-        <h1 id="h1" class="heading">Rings & Badges 
-            <span class="green">♫</span>
-        </h1>
+        <h1 id="h1" class="heading">Badges ~ <span class="green">♫</span></h1>
+            
+        <br>
+        <p class="paragraph"><span class="dropcap">C</span>ollection of badges I earned through the wide web! I love to view this page as mini achievements for going through goals and searching for other indie websites. Join with me or not, it is up to you</p>
     </header>
-    <div class="align-center paragraph">
+    <br>
+    <section class="flex-row">
+    <div class="align-center paragraph badge-box">
         <a target="_blank" href="https://layercake.moe/home"><img src="./assets/graphics/medal.png"></a>
         <p>Date completed: 15th November 2025</p>
+    </div>
+    <div class="align-center paragraph badge-box">
         <a href="https://secretshrineta.neocities.org/">
             <img src="./assets/graphics/shrineta-thankyou.png">
         </a>
         <p>Date received: 13th December 2025</p>
     </div>
+    </section>
     <section class="ssclub" id="ssclub">
         <!-- Sticker Sheet Club Header -->
          <table id="ssclubheader_1" style="background-image:url('https://stickersheetclub.neocities.org/images/stickersheetheader.png'); background-repeat: repeat-x; background-position: top center;" height="80">
@@ -91,8 +103,10 @@
                <a href="https://gummyring.neocities.org"><img src="http://gummyring.neocities.org/gummyring.png"></a>
                <a href="https://gummyring.neocities.org/?action=next"><img src="http://gummyring.neocities.org/next.png"></a>
             </center>
-            <journal-ring icon="pink"></journal-ring><script async src="https://cdn.jsdelivr.net/gh/js044/nenrikido@main/static/js/misc/journalring.js"></script>
             </section>
+            <!-- Scroll to top fixed button -->
+        <button onclick="topFunction()" id="scrollbtn" title="Go to top">Scroll to top ⤴</button>
     </main>
+<script src="../../assets/scripts/scrolltotop.js"></script>
 </body>
 </html>

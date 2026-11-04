@@ -379,6 +379,23 @@ footer {
         margin-bottom: 2rem;
     }
 }
+.flex-row {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: center;
+    gap: 2rem;
+    margin: 1rem;
+}
+.badge-box {
+    background-color: var(--color-pink);
+    padding: 10px;
+    display: flex;
+    flex-direction: column;   
+    justify-content: flex-end;
+    border: 3px inset var(--color-blue);
+}
+
 @media only screen and (max-width: 650px) {
     .content-wrapper {
         text-align: center;
@@ -411,5 +428,8 @@ footer {
     }
     .menu {
         max-width: 100%;
+    }
+    .flex-row {
+        flex-direction: column;
     }
 }
