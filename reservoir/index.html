@@ -7,6 +7,14 @@
     <link rel="stylesheet" href="../assets/general_styles/reservoir.css">
     <link rel="stylesheet" href="../assets/general_styles/scrollbar.css">
     <link rel="stylesheet" href="../assets/general_styles/root.css">
+    <script type="module">
+      import {
+        fairyDustCursor
+      } from "https://unpkg.com/cursor-effects@latest/dist/esm.js";
+      new fairyDustCursor({
+        colors: ["#69d1f0", "#f4cbc7", "#cdb4db"],
+      });
+    </script>
     <title>RESERVOIR</title>
   </head>
   <body>
@@ -143,6 +151,7 @@
             <figcaption>Lily by Septh</figcaption>
           </figure>
         </div>
+        <img style="display:block; margin:0 auto; width:300px;" src="../assets/graphics/pte-polaroid.png">
       </section>
       <!-- Scroll to top fixed button -->
       <button onclick="topFunction()" id="scrollbtn" title="Go to top">Scroll to top ⤴</button>
@@ -181,7 +190,6 @@
         }
       }
     </script>
-    <script src="https://app.embed.im/sparkles.js" defer></script>
     <script src="../assets/scripts/scrolltotop.js"></script>
   </body>
 </html>
