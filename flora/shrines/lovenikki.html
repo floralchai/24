@@ -367,7 +367,7 @@
           flex-direction: column-reverse;
         }
       }
-@media only screen and (max-width: 520px) {
+@media only screen and (max-width: 860px) {
   html {
     overflow-x: hidden;
   }
@@ -390,6 +390,8 @@
 
     cursor: pointer;
     font-family: "EmilysCandy", serif;
+    margin-bottom: 10px;
+
   }
 
   /* hide decoration + separators */
@@ -419,15 +421,26 @@
   /* make links tappable */
   .nav-button {
     text-align: right;
-    background: #f5efe8;
-    border: 1px solid #744b3d;
-    width: 100%;
-  }
-  .nav-button:hover {
     background: url("../../assets/graphics/dotbg-forln.gif");
+    border: 2px dotted #744b3d;
+    width: 100%;
+    margin-bottom: 10px;
   }
-
 }
+
+@media only screen and (max-width: 460px) {
+  .nav-row {
+    display: flex; /* Hide by default on mobile/tablet */
+    flex-direction: column;
+  }
+  .nav.open .nav-row {
+    display: flex; /* Show when toggled */
+  }
+  .nav-toggle {
+    display: block; /* Ensure toggle button is visible */
+  }
+}
+
     </style>
   </head>
   <body>
@@ -574,18 +587,30 @@
     <script>
 const buttons = document.querySelectorAll(".nav-button");
 const boxes = document.querySelectorAll(".box, .boxpink");
+const navToggle = document.querySelector('.nav-toggle');
+const navMenu = document.querySelector('.nav');
 
+// Section Switching Logic
 buttons.forEach(btn => {
   btn.addEventListener("click", e => {
     e.preventDefault();
-
     const id = btn.getAttribute("href").substring(1);
-
+    
+    // Hide all boxes
     boxes.forEach(box => box.classList.remove("active"));
-
+    
+    // Show target box
     const target = document.getElementById(id);
     if (target) target.classList.add("active");
+
+    // Close mobile menu
+    navMenu.classList.remove('open');
   });
+});
+
+// Mobile Toggle Logic
+navToggle.addEventListener('click', () => {
+  navMenu.classList.toggle('open');
 });
 </script>
   </body>
