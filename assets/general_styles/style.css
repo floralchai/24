@@ -4,7 +4,19 @@ body {
     radial-gradient(white 1px, transparent 1px),
     url("../graphics/bg-green.gif");
 }
-
+.table.gsc-search-box td {
+    display: flex;
+    align-items: flex-start;
+}
+form.gsc-search-box {
+    margin: 0 !important;
+    max-width: none !important;
+}
+form.gsc-search-box {
+    max-width: none !important;
+    font-size: 12px !important;
+    margin: 0 !important;
+}
 body::before {
     background: url("../graphics/chime-green.png") no-repeat center/contain;
 }
