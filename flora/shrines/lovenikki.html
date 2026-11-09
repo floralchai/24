@@ -44,6 +44,7 @@
         color: #4b2e1a;
         font-family: "SourceSerif4", serif;
         margin: 0 auto;
+        overflow-x: hidden
       }
 
       a {
@@ -327,7 +328,9 @@
         color: #5a3b2e;
         opacity: 0.75;
       }
-
+      .footer p {
+        text-shadow: -1px 0 #fff, 0 1px #fff, 1px 0 #fff, 0 -1px #fff
+      }
       .nav-toggle {
         display: none;
       }
@@ -344,6 +347,10 @@
         .flex {
           flex-direction: column;
           justify-content: center;
+        }
+        
+        .clipped-mir {
+          display: none;
         }
 
         .nav-separator,
@@ -389,7 +396,6 @@
         html {
           margin: 0;
         }
-
         .nav-button {
           min-width: 60px;
           aspect-ratio: 16 / 9;
@@ -648,7 +654,7 @@
           <img class="clipped-dia" src="../../assets/graphics/diamond-forln.png" alt="">
         </section>
         <footer class="footer">
-          <p>Part of <a href="../../index.html">Floralchai</a>. This is a fansite for Love Nikki and does not relate to Papergames </p>
+          <p>Part of <a href="../../index.html">Floralchai</a>. This is a fansite for Love Nikki and does not relate to Papergames</p>
         </footer>
       </main>
     </section>
