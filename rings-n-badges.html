@@ -9,15 +9,14 @@
     <title>Badges</title>
     <style>
       body::before {
-        background: url('./assets/graphics/charm-dreamcatchernest.png') no-repeat top right / contain;
+        background: url('./assets/graphics/charm-dreamcatchernest.png') no-repeat right top / contain;
       }
-
       body {
-        background: radial-gradient(white 1px, transparent 1px), gold;
-        background-size: 15px 15px;
+        background: url('./assets/graphics/charm-acorn.png') no-repeat right bottom / contain, radial-gradient(white 1px, transparent 1px), gold;
+        background-size: auto, 15px 15px;
         background-attachment: fixed;
+        background-position: bottom 15% right 10%, right top;
       }
-
       .webrings {
         display: flex;
         flex-direction: column;
