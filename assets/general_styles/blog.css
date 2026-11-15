@@ -138,9 +138,15 @@ dt {
 .nav-disabled {
   min-width: 10rem;
 }
+
+.btn-nav {
+    margin-left: 0 !important;
+}
 @media only screen and (max-width:1100px) {
     body {
-        background-image: none !important;
+        background: radial-gradient(white 1px, transparent 1px), var(--color-pink);
+        background-size: 15px 15px;
+        background-attachment: fixed;
     }
 }
 @media only screen and (max-width: 950px) {

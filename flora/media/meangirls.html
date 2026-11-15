@@ -67,24 +67,20 @@
             background-position: bottom right, top right, center;
             font-size: 0.75rem;
             background-size: 8%, 40%, auto;
+            z-index: 99;
         }
         .base, .base-sidebg {
             width: min(42rem, 100%);
             padding: 0.75rem;
             border: none;
         }
-        .base {
-            margin-top: 2rem;
-        }
 
         .base-sidebg {
-            z-index: -999;
             top: 0;
             bottom: 0;
         }
 
         .base-sidebg {
-            position: fixed;
             padding: 1.5rem;
             background-image: url("../../assets/graphics/bg-lace.gif");
             background-repeat: repeat-x;
@@ -95,16 +91,18 @@
             position: absolute;
             top: 0;
             bottom: 0;
-            right: -50px; /* move it outside */
-            width: 50px;  /* width of your border strip */
+            right: -60px; /* move it outside */
+            width: 60px;  /* width of your border strip */
             height: 100%;
             background-image: url("../../assets/graphics/p_lace.png");
             background-repeat: repeat-y;
             background-size: 50px 60px;
         }
+        
         .base {
             border-left: 2px dashed #f4b8da;
             margin-left: 10px;
+            margin-top: 3rem;
         }
         .logo, .note {
             height: 150px;
@@ -175,14 +173,11 @@
             color: gray;
         }
         @media only screen and (max-width: 1000px) {
-            body {
-                background-color: var(--color-white);
-                background-image: none;
-            }
             .base {
-                margin: auto;
                 display: block;
                 margin-top: 3rem;
+                background-color: #fffff000;
+                border-left: none;
             }
             .base-sidebg {
                 width: 100%;
@@ -221,7 +216,7 @@
     <main class="base">
         <nav class="flex">
             <a class="back" href="../index.html">⟵ back to flora</a>
-            <span>Last updated: 04 November 2026</span>
+            <span>Last updated: 15 November 2026</span>
         </nav>
             <h1>Mean Girls</h1>
         <img class="note" src="../../assets/graphics/blacknote.png">
