@@ -10,10 +10,10 @@
 }
 @font-face {
     font-family: 'HachiMaru';
-    src: url('/chiikawas/HachiMaruPop-Regular.ttf');
+    src: url('../../chiikawas/HachiMaruPop-Regular.ttf');
 }
 body {
-    background-image: url("/chiikawas/chiikawa-grass.png");
+    background-image: url("../../chiikawas/chiikawa-grass.png");
     background-position: top right;
     background-attachment: scroll;
     color: var(--color-black);
