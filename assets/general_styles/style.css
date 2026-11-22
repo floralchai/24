@@ -166,7 +166,7 @@ body::before {
 }
 .chiikawa-link:hover {
     font-style: normal;
-    text-decoration: underline 3px #fff;
+    text-decoration: underline 3px gray;
     text-underline-offset: 5px;
 }
 #statuscafe, .paragraph_transparent {

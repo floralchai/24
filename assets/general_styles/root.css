@@ -244,6 +244,9 @@ hr.dashed {
 .yellow {
     color: var(--color-yellow);
 }
+.purple {
+    color: var(--color-purple);
+}
 .heart:hover {
     background-color: darkred;
 }
@@ -262,7 +265,10 @@ hr.dashed {
 .yellow:hover {
     background-color: var(--color-yellow);
 }
-.green, .pink, .orange, .blue, .yellow {
+.purple:hover {
+    background-color: var(--color-purple);
+}
+.green, .pink, .orange, .blue, .yellow, .purple {
     font-style: normal;
 }
 .green:hover, .orange:hover, .blue:hover, .pink:hover, .heart:hover, .yellow:hover {
@@ -335,7 +341,7 @@ button:hover {
     margin: 1rem;
 }
 .badge-box {
-    background-color: var(--color-pink);
+    background-color: oldlace;
     padding: 10px;
     display: flex;
     flex-direction: column;   
