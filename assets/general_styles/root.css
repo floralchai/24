@@ -185,6 +185,10 @@ hr.rose {
     background-position: right;
     background-size: contain;
 }
+.bullet {
+    vertical-align: middle;
+    width: 18px;
+}
 .current {
     font-weight: bold;
 }
