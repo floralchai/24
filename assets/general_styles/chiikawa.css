@@ -21,6 +21,19 @@ body {
     background-size: cover !important;
 
 }
+.code-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    flex-shrink: 0;
+    font-size: 0.6rem;
+}
+.flex-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
 .base {
     font-family: "SourceSerif4", 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     background-repeat: no-repeat;

@@ -346,7 +346,7 @@ button:hover {
 }
 .badge-box {
     background-color: oldlace;
-    padding: 10px;
+    padding: .25rem;
     display: flex;
     flex-direction: column;   
     justify-content: flex-end;
