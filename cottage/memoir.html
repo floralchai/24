@@ -104,13 +104,44 @@
             align-self: flex-start !important;
           }
 
-          /* Give each comment profile icon its own soft pastel tint. */
-          #waline-memoir .wl-card:nth-child(6n + 1) .wl-avatar { filter: hue-rotate(0deg) saturate(1.15); background-color: #f8dce5 !important; }
-          #waline-memoir .wl-card:nth-child(6n + 2) .wl-avatar { filter: hue-rotate(55deg) saturate(1.15); background-color: #f7e8c9 !important; }
-          #waline-memoir .wl-card:nth-child(6n + 3) .wl-avatar { filter: hue-rotate(115deg) saturate(1.15); background-color: #dcefdc !important; }
-          #waline-memoir .wl-card:nth-child(6n + 4) .wl-avatar { filter: hue-rotate(180deg) saturate(1.15); background-color: #dceafa !important; }
-          #waline-memoir .wl-card:nth-child(6n + 5) .wl-avatar { filter: hue-rotate(245deg) saturate(1.15); background-color: #e9def7 !important; }
-          #waline-memoir .wl-card:nth-child(6n) .wl-avatar { filter: hue-rotate(305deg) saturate(1.15); background-color: #f4dfd2 !important; }
+          /* Waline v3 comment profiles use .wl-user and .wl-user-avatar,
+             not .wl-avatar. Tint the actual avatar and show a fallback icon
+             when an anonymous commenter has no avatar image. */
+          #waline-memoir .wl-card-item {
+            --memoir-avatar-bg: #f8dce5;
+            --memoir-avatar-fg: #a94f70;
+          }
+          #waline-memoir .wl-card-item:nth-child(6n + 2) { --memoir-avatar-bg: #f7e8c9; --memoir-avatar-fg: #98702d; }
+          #waline-memoir .wl-card-item:nth-child(6n + 3) { --memoir-avatar-bg: #dcefdc; --memoir-avatar-fg: #477c50; }
+          #waline-memoir .wl-card-item:nth-child(6n + 4) { --memoir-avatar-bg: #dceafa; --memoir-avatar-fg: #4776a5; }
+          #waline-memoir .wl-card-item:nth-child(6n + 5) { --memoir-avatar-bg: #e9def7; --memoir-avatar-fg: #7956a5; }
+          #waline-memoir .wl-card-item:nth-child(6n) { --memoir-avatar-bg: #f4dfd2; --memoir-avatar-fg: #a66b4b; }
+          #waline-memoir .wl-card-item .wl-user {
+            display: flex !important;
+            flex: 0 0 2.5rem !important;
+            width: 2.5rem !important;
+            height: 2.5rem !important;
+            align-items: center !important;
+            justify-content: center !important;
+            overflow: hidden;
+            border-radius: 50% !important;
+            background: var(--memoir-avatar-bg) !important;
+            color: var(--memoir-avatar-fg) !important;
+          }
+          #waline-memoir .wl-card-item .wl-user-avatar {
+            display: block !important;
+            width: 100% !important;
+            height: 100% !important;
+            object-fit: cover !important;
+            filter: none !important;
+          }
+          #waline-memoir .wl-card-item .wl-user:not(:has(.wl-user-avatar))::before {
+            content: "♟";
+            display: block;
+            color: var(--memoir-avatar-fg);
+            font-size: 1.55rem;
+            line-height: 1;
+          }
           #waline-memoir .wl-header-item input,
           #waline-memoir .wl-input,
           #waline-memoir textarea,
