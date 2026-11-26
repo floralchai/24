@@ -104,9 +104,8 @@
             align-self: flex-start !important;
           }
 
-          /* Waline v3 comment profiles use .wl-user and .wl-user-avatar,
-             not .wl-avatar. Tint the actual avatar and show a fallback icon
-             when an anonymous commenter has no avatar image. */
+          /* Replace Waline's default Libravatar image with a local CSS
+             silhouette, so no external avatar service is displayed. */
           #waline-memoir .wl-card-item {
             --memoir-avatar-bg: #f8dce5;
             --memoir-avatar-fg: #a94f70;
@@ -128,19 +127,19 @@
             background: var(--memoir-avatar-bg) !important;
             color: var(--memoir-avatar-fg) !important;
           }
+          /* Waline supplies a Libravatar URL even for blank email addresses.
+             Hide that remote image and draw a simple anonymous-user silhouette. */
           #waline-memoir .wl-card-item .wl-user-avatar {
-            display: block !important;
-            width: 100% !important;
-            height: 100% !important;
-            object-fit: cover !important;
-            filter: none !important;
+            display: none !important;
           }
-          #waline-memoir .wl-card-item .wl-user:not(:has(.wl-user-avatar))::before {
-            content: "♟";
+          #waline-memoir .wl-card-item .wl-user::before {
+            content: "";
             display: block;
-            color: var(--memoir-avatar-fg);
-            font-size: 1.55rem;
-            line-height: 1;
+            width: 1.35rem;
+            height: 1.35rem;
+            background:
+              radial-gradient(circle at 50% 29%, var(--memoir-avatar-fg) 0 23%, transparent 25%),
+              radial-gradient(ellipse at 50% 105%, var(--memoir-avatar-fg) 0 43%, transparent 45%);
           }
           #waline-memoir .wl-header-item input,
           #waline-memoir .wl-input,
