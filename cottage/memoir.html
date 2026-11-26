@@ -26,28 +26,144 @@
           <li>Confide with love and care, express yourself freely</li>
           <li>When sent, I will read it then reply. If not replied, that might be I'm on hiatus or busy</li>
         </ol>
-        <section class="box paragraph">
-          <!-- begin wwww.htmlcommentbox.com -->
-          <div id="HCB_comment_box">
-            <a href="http://www.htmlcommentbox.com">Comment Form</a> is loading comments...
+        <section class="box paragraph memoir-waline-box">
+          <div id="waline-memoir" aria-label="Memoir comments">
+            <p>Loading comments…</p>
           </div>
-          <link rel="stylesheet" type="text/css" href="https://www.htmlcommentbox.com/static/skins/bootstrap/twitter-bootstrap.css?v=0" />
-          <script type="text/javascript" id="hcb">
-            /*
-												<!--*/
-            if (!window.hcb_user) {
-              hcb_user = {};
-            }(function() {
-              var s = document.createElement("script"),
-                l = hcb_user.PAGE || ("" + window.location).replace(/'/g, "%27"),
-                h = "https://www.htmlcommentbox.com";
-              s.setAttribute("type", "text/javascript");
-              s.setAttribute("src", h + "/jread?page=" + encodeURIComponent(l).replace("+", "%2B") + "&mod=%241%24wq1rdBcg%24qOBa8dPOg1MMol9PqCEcR%2F" + "&opts=16798&num=10&ts=1793425796895");
-              if (typeof s != "undefined") document.getElementsByTagName("head")[0].appendChild(s);
-            })(); /*-->*/
-          </script>
-          <!-- end www.htmlcommentbox.com -->
         </section>
+
+        <link rel="stylesheet" href="https://unpkg.com/@waline/client@v3/dist/waline.css">
+        <style>
+          /* Keep the existing cmtbox.css dimensions, typography and monochrome buttons. */
+          .memoir-waline-box {
+            max-width: 800px;
+            width: 100%;
+            padding: 1rem;
+            overflow: hidden;
+          }
+          #waline-memoir {
+            width: 100%;
+            max-width: 100%;
+            font-family: "SourceSerif4", "Times New Roman", Times, serif;
+            font-size: .8rem;
+            color: var(--color-black, #000);
+            --waline-theme-color: #000;
+            --waline-active-color: #555;
+            --waline-color: #000;
+            --waline-bg-color: #fffefc;
+            --waline-bg-color-light: #fffefc;
+            --waline-bg-color-hover: #f7f7f7;
+            --waline-border-color: #c4c4c4;
+            --waline-disable-bg-color: #f5f5f5;
+            --waline-disable-color: #777;
+            --waline-bq-color: #f5f5f5;
+            --waline-box-shadow: none;
+          }
+          #waline-memoir .wl-panel,
+          #waline-memoir .wl-card {
+            max-width: 100%;
+            border: 2px solid #c4c4c4 !important;
+            border-radius: 0 !important;
+            box-shadow: none !important;
+            background: #fffefc !important;
+          }
+          #waline-memoir .wl-panel {
+            padding: 1rem !important;
+          }
+          #waline-memoir .wl-header {
+            display: flex;
+            flex-wrap: wrap;
+            gap: .75rem;
+            border-bottom: 0;
+          }
+          #waline-memoir .wl-header-item {
+            flex: 1 1 14rem;
+            min-width: 0;
+          }
+          #waline-memoir .wl-header-item input,
+          #waline-memoir .wl-input,
+          #waline-memoir textarea,
+          #waline-memoir .wl-textarea {
+            display: block;
+            box-sizing: border-box !important;
+            width: 100% !important;
+            max-width: 100% !important;
+            min-width: 0 !important;
+            margin: .5rem 0 !important;
+            padding: .5rem !important;
+            border: 2px solid #c4c4c4 !important;
+            border-radius: 0 !important;
+            background: #fffefc !important;
+            color: #777 !important;
+            font: normal .8rem "SourceSerif4", "Times New Roman", Times, serif !important;
+            box-shadow: none !important;
+          }
+          #waline-memoir textarea {
+            min-height: 150px;
+            resize: vertical;
+          }
+          #waline-memoir .wl-btn,
+          #waline-memoir .wl-btn.primary {
+            padding: 5px !important;
+            border: 1px solid #000 !important;
+            border-radius: 0 !important;
+            background: #000 !important;
+            color: #fff !important;
+            font-family: "SourceSerif4", "Times New Roman", Times, serif !important;
+            box-shadow: none !important;
+          }
+          #waline-memoir .wl-btn:hover,
+          #waline-memoir .wl-btn.primary:hover {
+            border: 2px dotted #000 !important;
+            background: #fff !important;
+            color: #000 !important;
+            transition: none !important;
+            animation: none !important;
+          }
+          #waline-memoir .wl-nick,
+          #waline-memoir .wl-meta,
+          #waline-memoir .wl-content {
+            font-family: "SourceSerif4", "Times New Roman", Times, serif !important;
+          }
+          #waline-memoir .wl-content {
+            font-size: .8rem;
+          }
+          #waline-memoir .wl-card {
+            margin-bottom: .75rem;
+          }
+          @media (max-width: 480px) {
+            .memoir-waline-box {
+              padding: .75rem;
+            }
+            #waline-memoir .wl-panel {
+              padding: .65rem !important;
+            }
+          }
+        </style>
+        <script type="module">
+          import { init } from "https://unpkg.com/@waline/client@v3/dist/waline.js";
+
+          init({
+            el: "#waline-memoir",
+            serverURL: "https://waline-comment-floralchai.vercel.app",
+            path: window.location.pathname,
+            lang: "en",
+            login: "disable",
+            meta: ["nick", "mail", "link"],
+            requiredMeta: ["nick"],
+            commentSorting: "latest",
+            pageSize: 10,
+            placeholder: "Leave a kind little message…",
+            locale: {
+              nick: "Nickname",
+              mail: "Email (optional)",
+              link: "Website (optional)",
+              placeholder: "Leave a kind little message…",
+              submit: "Submit",
+              sofa: "No comments yet. Be the first to leave a note!",
+            },
+          });
+        </script>
         <p class="paragraph"> Let me know in <a class="link">this page</a> if you've any suggestions or inquiries, <span class="purple">this is optional</span>
         </p>
       </section>
@@ -66,6 +182,5 @@
   }
 });
 </script>
-  <script src="/assets/scripts/comments.js"></script>
 </body>
 </html>
