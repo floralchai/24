@@ -102,12 +102,16 @@
     }
     .gallery img {
         width: 130px;
-        height: fit-content;
+        height: stretch;
     }
 }
 @media only screen and (max-width: 480px) {
     main {
+        width: 100%;
         padding: 0.5rem;
+        border-left: 2px dotted orange;
+        border-right: 2px dotted orange;
+        margin: 0 !important;
     }
     h2 {
         text-align: center;
