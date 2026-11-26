@@ -207,7 +207,7 @@ body::before {
     .profile, .box_about {
         max-width: 80%;
         display: block;
-        margin: 10px auto;
+        margin: auto;
     }
     .box-right {
         max-width: calc(100% - 20px);
