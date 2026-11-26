@@ -96,9 +96,16 @@
             border: 2px solid #c4c4c4 !important;
             border-radius: 0 !important;
             background: #fffefc !important;
-            color: #777 !important;
+            color: #222 !important;
             font: normal .8rem "SourceSerif4", "Times New Roman", Times, serif !important;
             box-shadow: none !important;
+          }
+          #waline-memoir .wl-header-item input::placeholder,
+          #waline-memoir textarea::placeholder,
+          #waline-memoir .wl-input::placeholder,
+          #waline-memoir .wl-textarea::placeholder {
+            color: #888 !important;
+            opacity: 1 !important;
           }
           #waline-memoir textarea {
             min-height: 150px;
@@ -144,6 +151,25 @@
         </style>
         <script type="module">
           import { init } from "https://unpkg.com/@waline/client@v3/dist/waline.js";
+
+          const mount = document.querySelector("#waline-memoir");
+
+          const addFieldPlaceholders = () => {
+            const inputs = mount?.querySelectorAll(".wl-header-item input");
+            if (inputs) {
+              const placeholders = ["Your nickname…", "Email (optional)…", "Website (optional)…"];
+              inputs.forEach((input, index) => {
+                if (!input.placeholder) input.placeholder = placeholders[index] || "Type here…";
+              });
+            }
+            const textarea = mount?.querySelector("textarea");
+            if (textarea && !textarea.placeholder) {
+              textarea.placeholder = "Leave a kind little message…";
+            }
+          };
+
+          const placeholderObserver = new MutationObserver(addFieldPlaceholders);
+          if (mount) placeholderObserver.observe(mount, { childList: true, subtree: true });
 
           init({
             el: "#waline-memoir",
