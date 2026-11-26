@@ -94,6 +94,23 @@
             min-width: 0 !important;
             margin: 0 !important;
           }
+
+          /* Keep field labels consistently aligned to the left edge. */
+          #waline-memoir .wl-header-item label,
+          #waline-memoir .wl-header-item .wl-label {
+            display: block !important;
+            width: 100% !important;
+            text-align: left !important;
+            align-self: flex-start !important;
+          }
+
+          /* Give each comment profile icon its own soft pastel tint. */
+          #waline-memoir .wl-card:nth-child(6n + 1) .wl-avatar { filter: hue-rotate(0deg) saturate(1.15); background-color: #f8dce5 !important; }
+          #waline-memoir .wl-card:nth-child(6n + 2) .wl-avatar { filter: hue-rotate(55deg) saturate(1.15); background-color: #f7e8c9 !important; }
+          #waline-memoir .wl-card:nth-child(6n + 3) .wl-avatar { filter: hue-rotate(115deg) saturate(1.15); background-color: #dcefdc !important; }
+          #waline-memoir .wl-card:nth-child(6n + 4) .wl-avatar { filter: hue-rotate(180deg) saturate(1.15); background-color: #dceafa !important; }
+          #waline-memoir .wl-card:nth-child(6n + 5) .wl-avatar { filter: hue-rotate(245deg) saturate(1.15); background-color: #e9def7 !important; }
+          #waline-memoir .wl-card:nth-child(6n) .wl-avatar { filter: hue-rotate(305deg) saturate(1.15); background-color: #f4dfd2 !important; }
           #waline-memoir .wl-header-item input,
           #waline-memoir .wl-input,
           #waline-memoir textarea,
