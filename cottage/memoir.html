@@ -38,7 +38,7 @@
           .memoir-waline-box {
             max-width: 800px;
             width: 100%;
-            padding: 1rem;
+            padding: .75rem;
             overflow: hidden;
           }
           #waline-memoir {
@@ -75,7 +75,7 @@
             flex-wrap: wrap;
             flex-direction: column;
             border-bottom: 0;
-            flex-direction: column;
+            align-items: flex-start;
           }
           #waline-memoir .wl-header-item {
             min-width: 0;
@@ -157,7 +157,7 @@
           const addFieldPlaceholders = () => {
             const inputs = mount?.querySelectorAll(".wl-header-item input");
             if (inputs) {
-              const placeholders = ["Your nickname…", "Email (optional)…", "Website (optional)…"];
+              const placeholders = ["Your nickname", "emailexample@gmail.com", "https://yoursite-url.com"];
               inputs.forEach((input, index) => {
                 if (!input.placeholder) input.placeholder = placeholders[index] || "Type here…";
               });
