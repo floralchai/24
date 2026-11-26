@@ -136,6 +136,6 @@
     }
     .gallery img {
         width: 100px;
-        height: auto;
+        height: stretch;
     }
 }
