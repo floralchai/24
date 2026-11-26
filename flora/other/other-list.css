@@ -127,12 +127,15 @@
         width: 140px;
         height: auto;
     }
+    .img-section {
+        width: 120px;
+    }
     .gallery {
-        justify-content: center;
+        justify-content: flex-start;
         gap: 5px;
     }
     .gallery img {
-        width: 110px;
+        width: 100px;
         height: auto;
     }
 }

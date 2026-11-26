@@ -106,12 +106,9 @@ hr.divider {
   }
 }
 @media only screen and (max-width: 420px) {
-  .column-gallery {
-    flex-direction: column;
-  }
   .gallery {
-    flex: 1;
-    max-width: 100%;
+    flex: auto;
+    max-width: max-content;
   }
   .polaroid:hover, .polaroid:focus {
     scale: 1.1;
